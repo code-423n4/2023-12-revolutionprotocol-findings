@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "kk_krish",
+  "risk": "3",
+  "title": "Auction can't be settled forever if msg.value for erc20TokenEmitter.buyToken is less than minPurchaseAmount",
+  "issueId": 8,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/8"
+}
