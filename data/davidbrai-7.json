@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "davidbrai",
+  "risk": "2",
+  "title": "NontransferableERC20Votes can be implicitly transferred by changing account owner",
+  "issueId": 7,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/7"
+}
