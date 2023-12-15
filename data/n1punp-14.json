@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "n1punp",
+  "risk": "3",
+  "title": "Top voted minting is prone to frontrunning attack (frontrun vote before actual mint tx).",
+  "issueId": 14,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/14"
+}
