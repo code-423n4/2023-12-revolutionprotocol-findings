@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "rvierdiiev",
+  "risk": "3",
+  "title": "CultureIndex.createPiece can be frontrunned with other creatorArray",
+  "issueId": 31,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/31"
+}
