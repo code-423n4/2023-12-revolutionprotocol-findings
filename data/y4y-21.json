@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "y4y",
+  "risk": "2",
+  "title": "Decimals are not normalized for ERC20 in CultureIndex may result in incorrect supply and weight ",
+  "issueId": 21,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/21"
+}
