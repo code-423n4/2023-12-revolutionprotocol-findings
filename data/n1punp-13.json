@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "n1punp",
+  "risk": "3",
+  "title": "ETH may get stuck in ERC20TokenEmitter forever",
+  "issueId": 13,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/13"
+}
