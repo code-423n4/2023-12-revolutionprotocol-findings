@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "sixiecow",
+  "risk": "3",
+  "title": "a malicious user can permenantly disable the buToken function inside the ERC20Emitter",
+  "issueId": 12,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/12"
+}
