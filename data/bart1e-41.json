@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "bart1e",
+  "risk": "2",
+  "title": "MaxHeap will work incorrectly if updateValue is called for some item with value lower than the current one",
+  "issueId": 41,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/41"
+}
