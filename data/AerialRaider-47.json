@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "AerialRaider",
+  "risk": "2",
+  "title": "Defending against attacks in the (insert, updateValue, extractMax, maxHeapify, getMax, and _authorizeUpgrade) functions of the MaxHeap contract .",
+  "issueId": 47,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/47"
+}
