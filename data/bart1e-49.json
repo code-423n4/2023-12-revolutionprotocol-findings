@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "bart1e",
+  "risk": "3",
+  "title": "Malicious delegatees can block delegators from redelegating and from sending their NFTs",
+  "issueId": 49,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/49"
+}
