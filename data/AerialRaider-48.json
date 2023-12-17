@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "AerialRaider",
+  "risk": "2",
+  "title": "Hypothetical Attack Scenarios on theinitialize and createPiece functions in the CultureIndex contract, and how do these checks defend it",
+  "issueId": 48,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/48"
+}
