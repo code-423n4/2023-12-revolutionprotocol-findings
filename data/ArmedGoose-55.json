@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ArmedGoose",
+  "risk": "2",
+  "title": "In an edge case, using functionality `setReservePrice` will disrupt current auction if the `reservePrice` is increased significantly",
+  "issueId": 55,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/55"
+}
