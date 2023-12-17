@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ArmedGoose",
+  "risk": "2",
+  "title": "CultureIndex accepts arbitrary URLs which may lead to Cross-Site Scripting  or similar attacks",
+  "issueId": 53,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/53"
+}
