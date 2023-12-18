@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "twcctop",
+  "risk": "2",
+  "title": "Cross-Chain Signature Replay Attack",
+  "issueId": 73,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/73"
+}
