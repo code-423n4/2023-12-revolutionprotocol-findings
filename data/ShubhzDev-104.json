@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ShubhzDev",
+  "risk": "3",
+  "title": "No check done on _dropperAdmin if address passed  in parameter is an invalid address(address(0) = Zeroaddress)",
+  "issueId": 104,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/104"
+}
