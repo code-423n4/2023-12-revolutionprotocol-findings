@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ArmedGoose",
+  "risk": "2",
+  "title": "Everytime an auction ends before CultureIndex has met quorum, the AuctionHouse will be put in a paused state and require manual unpausing each time.",
+  "issueId": 69,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/69"
+}
