@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "0xmystery",
+  "risk": "2",
+  "title": "Flash attacks on drops via `CultureIndex._vote()`",
+  "issueId": 94,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/94"
+}
