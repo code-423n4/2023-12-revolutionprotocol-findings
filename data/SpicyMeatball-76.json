@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "SpicyMeatball",
+  "risk": "2",
+  "title": "EIP712Upgradeable is not initialized in VerbsToken.sol",
+  "issueId": 76,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/76"
+}
