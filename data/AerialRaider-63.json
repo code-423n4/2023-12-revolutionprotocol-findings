@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "AerialRaider",
+  "risk": "2",
+  "title": "Securing the _authorizeUpgrade, _setQuorumVotesBPSfunctions,  voteForManyWithSig and the batchVoteForManyWithSig Functions in the CultureIndex contract",
+  "issueId": 63,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/63"
+}
