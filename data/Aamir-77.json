@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Aamir",
+  "risk": "2",
+  "title": "`encodedData` argument of `hashStruct` is not calculated perfectly for EIP712 singed messages in `CultureIndex.sol`",
+  "issueId": 77,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/77"
+}
