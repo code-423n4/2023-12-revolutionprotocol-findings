@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "twcctop",
+  "risk": "2",
+  "title": "`setReservePrice`  may affect the  `settleAuction`  logic ",
+  "issueId": 70,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/70"
+}
