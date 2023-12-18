@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ziyou-",
+  "risk": "2",
+  "title": "The initialize function lacks checking for the size of the timeBuffer and duration parameters. ",
+  "issueId": 59,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/59"
+}
