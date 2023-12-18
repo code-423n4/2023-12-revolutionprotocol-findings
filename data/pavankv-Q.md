@@ -181,6 +181,9 @@ Recommendation
 
 ```
 
+code snippet:-
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revolution/src/AuctionHouse.sol#L233C1-L246C6
+
 ## 6. Add a check for variable which will be rounding down to Zero.
 
 In function `buyToken()` calls `_handleRewardsAndGetValueToSend()` function with four arguments and this function calls three functions `computeTotalReward()` , `computePurchaseRewards()` and `_depositPurchaseRewards()`. First we will look into the `computeTotalReward()` function
@@ -265,3 +268,32 @@ Recommendation
 
 code snippet:-
 https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revolution/src/ERC20TokenEmitter.sol#L184C1-L187C49
+
+## 8. Both for-loop can be combine :-
+In the `batchVoteForManyWithSig()` function, two for-loops are used to verify signatures and vote for many pieces. These can be combined into a single loop, thereby reducing code size and makes code more concise.
+
+```solidity
+        for (uint256 i; i < len; i++) {
+            if (!_verifyVoteSignature(from[i], pieceIds[i], deadline[i], v[i], r[i], s[i])) revert INVALID_SIGNATURE();
+        }
+
+        for (uint256 i; i < len; i++) {
+            _voteForMany(pieceIds[i], from[i]);
+        }
+
+```
+
+Recommendation
+```solidity
+for (uint256 i; i < len; i++) {
+    if (!_verifyVoteSignature(from[i], pieceIds[i], deadline[i], v[i], r[i], s[i])) {
+        revert INVALID_SIGNATURE();
+    }
+    _voteForMany(pieceIds[i], from[i]);
+}
+
+```
+Our recommendation doesn't cause any error can be implemented safely.
+
+code snippet:-
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revolution/src/CultureIndex.sol#L403C1-L409C10
