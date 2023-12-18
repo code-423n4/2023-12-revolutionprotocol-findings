@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "cu5t0mpeo",
+  "risk": "3",
+  "title": "Part of the amount may be trapped in the ERC20TokenEmitter contract forever",
+  "issueId": 79,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/79"
+}
