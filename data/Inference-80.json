@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Inference",
+  "risk": "3",
+  "title": "Failing to settle an auction in case of inappropriate values for winning bid amount, creatorRateBps, and entrypRateBps in AuctionHouse contract due to insufficient checks in the corresponding setter functions.",
+  "issueId": 80,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/80"
+}
