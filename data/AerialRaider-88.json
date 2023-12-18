@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "AerialRaider",
+  "risk": "2",
+  "title": "Security checks on the initialize and mint functions in the NontransferableERC20Votes contract",
+  "issueId": 88,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/88"
+}
