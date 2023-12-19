@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "osmanozdemir1",
+  "risk": "2",
+  "title": "`ERC20TokenEmitter::buyToken` function mints more tokens to users than it should do",
+  "issueId": 194,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/194"
+}
