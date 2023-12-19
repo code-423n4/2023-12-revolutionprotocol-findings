@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "nmirchev8",
+  "risk": "2",
+  "title": "Gas griefing due to unchecked string values, which are copied in memory",
+  "issueId": 183,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/183"
+}
