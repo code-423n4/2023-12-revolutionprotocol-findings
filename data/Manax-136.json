@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Manax",
+  "risk": "3",
+  "title": "Reentrancy Vulnerability in buyToken() function",
+  "issueId": 136,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/136"
+}
