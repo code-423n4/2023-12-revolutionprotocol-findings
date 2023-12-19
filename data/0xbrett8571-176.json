@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "0xbrett8571",
+  "risk": "2",
+  "title": "AuctionCreator Payment Disruption due to Unbounded Arrays",
+  "issueId": 176,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/176"
+}
