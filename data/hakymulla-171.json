@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "hakymulla",
+  "risk": "3",
+  "title": "Surplus ETH trapped in ERC20TokenEmitter contract after calling `ERC20TokenEmitter::buyToken` function.",
+  "issueId": 171,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/171"
+}
