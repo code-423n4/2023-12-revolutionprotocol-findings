@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "SovaSlava",
+  "risk": "3",
+  "title": "Winning bid that is less than the minPurchase Amount blocks the completion of the auction",
+  "issueId": 196,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/196"
+}
