@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Abdessamed",
+  "risk": "3",
+  "title": "High portion of msg.value can be locked inside the ERC20TokenEmitter when calling buyToken",
+  "issueId": 153,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/153"
+}
