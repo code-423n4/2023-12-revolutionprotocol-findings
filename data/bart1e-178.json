@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "bart1e",
+  "risk": "2",
+  "title": "Since art pieces' size is not limited, attacker may create a piece which will either cost a lot of gas when _settleAuction is called or can even block AuctionHouse in the future",
+  "issueId": 178,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/178"
+}
