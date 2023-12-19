@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "0xmystery",
+  "risk": "2",
+  "title": "High Gas Consumption and Potential DoS Risk in MaxHeap Solidity Contract",
+  "issueId": 152,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/152"
+}
