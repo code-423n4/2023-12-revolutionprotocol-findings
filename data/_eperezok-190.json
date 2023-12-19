@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "_eperezok",
+  "risk": "2",
+  "title": "`ERC20TokenEmitter::buyToken` could be DoS’ed, causing loss of funds for the users",
+  "issueId": 190,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/190"
+}
