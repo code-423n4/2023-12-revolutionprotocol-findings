@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "plasmablocks",
+  "risk": "3",
+  "title": "Eth will be permanently locked in TokenEmitter contract when `buyToken` is called and `entropyRateBps` is less than 100%",
+  "issueId": 162,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/162"
+}
