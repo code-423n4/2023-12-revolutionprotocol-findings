@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "AerialRaider",
+  "risk": "2",
+  "title": "Ensuring the ERC20TokenEmitter contract always pays the creatorsAddress with security checks on the buyToken function in the ERC20TokenEmitter contract",
+  "issueId": 202,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/202"
+}
