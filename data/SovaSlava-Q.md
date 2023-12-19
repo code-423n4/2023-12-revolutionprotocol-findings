@@ -73,3 +73,8 @@ https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44
 ### [Q-9] There not need nonReentrant modifier in function with modifier onlyOwner
 Because owner is trusted role. 
 https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/ERC20TokenEmitter.sol#L309
+
+### [Q-10] Owner can set the value of _creatorRateBps directly to the function initial to avoid unnecessary calls.
+The initial value can be set in the initialize function. This has already been done for the creatorsAddress variable
+
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/ERC20TokenEmitter.sol#L299-L303
