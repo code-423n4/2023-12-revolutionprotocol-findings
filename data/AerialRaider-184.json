@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "AerialRaider",
+  "risk": "2",
+  "title": "Hypothetical Attack Scenarios on the constructor, computeTotalReward, computePurchaseRewards, _depositPurchaseRewards  function in the RewardSplits contract",
+  "issueId": 184,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/184"
+}
