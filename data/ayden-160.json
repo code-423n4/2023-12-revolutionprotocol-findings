@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ayden",
+  "risk": "3",
+  "title": "Once EntropyRateBps is set too high, can lead to denial-of-service (DoS) due to an invalid ETH amount",
+  "issueId": 160,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/160"
+}
