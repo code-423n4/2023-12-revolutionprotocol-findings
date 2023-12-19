@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "haxatron",
+  "risk": "2",
+  "title": "Can specify arbitrary protocolRewards in buyToken",
+  "issueId": 208,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/208"
+}
