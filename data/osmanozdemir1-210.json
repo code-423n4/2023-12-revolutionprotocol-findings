@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "osmanozdemir1",
+  "risk": "3",
+  "title": "Incorrect amounts of ETH are transferred to the DAO treasury in `ERC20TokenEmitter::buyToken()`, leading value leak in every transaction",
+  "issueId": 210,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/210"
+}
