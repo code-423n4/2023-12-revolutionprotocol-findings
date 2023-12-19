@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "peanuts",
+  "risk": "2",
+  "title": "ERC20Vote token buyers can set builder,purchaser,deployer reward to their own addresses",
+  "issueId": 177,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/177"
+}
