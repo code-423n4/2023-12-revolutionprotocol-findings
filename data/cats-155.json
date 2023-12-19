@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "cats",
+  "risk": "3",
+  "title": "NontransferableERC20Votes is supposed to be ERC20 compliant but it's not",
+  "issueId": 155,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/155"
+}
