@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Manax",
+  "risk": "3",
+  "title": "setEntropyRateBps() and setCreatorRateBps() are not protected by access control",
+  "issueId": 139,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/139"
+}
