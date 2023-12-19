@@ -1,5 +1,8 @@
 - The address of `WETH` stored in [AuctionHouse](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/AuctionHouse.sol#L54) can be set to `constant` as it is non-upgradable contract
 
+- A malicious `creatorAddress` contract can [block the execution](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/ERC20TokenEmitter.sol#L197) of `buyToken` on `ERC20TokenEmitter` by reverting the transaction whenever it receives ETH.
+ 
+
 - The check `require(newQuorumVotesBPS <= MAX_QUORUM_VOTES_BPS, "CultureIndex::_setQuorumVotesBPS: invalid quorum bps");` inside [_setQuorumVotesBPS](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol#L499) is contradictory with the function's doc `* @dev newQuorumVotesBPS must be greater than the hardcoded min`
 ```solidity
 /**
