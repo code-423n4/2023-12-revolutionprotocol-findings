@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "SpicyMeatball",
+  "risk": "3",
+  "title": "Some ETH will be stuck in the ERC20TokenEmitter.sol",
+  "issueId": 174,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/174"
+}
