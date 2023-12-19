@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "_eperezok",
+  "risk": "2",
+  "title": "`VerbsToken::tokenURI` breaks the EIP721 specification",
+  "issueId": 191,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/191"
+}
