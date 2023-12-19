@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Oxsadeeq",
+  "risk": "3",
+  "title": "Absence of slippage protection could lead to execution at very high prices due to frontrunning attacks.",
+  "issueId": 156,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/156"
+}
