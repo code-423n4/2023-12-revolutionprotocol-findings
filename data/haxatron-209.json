@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "haxatron",
+  "risk": "2",
+  "title": "emittedTokenWad is not updated after getTokenQuote for creators",
+  "issueId": 209,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/209"
+}
