@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "AerialRaider",
+  "risk": "3",
+  "title": "Ensuring that the ERC20TokenEmitter and AuctionHouse contracts always pay creators with checks on the _settleAuction functions in the AuctionHouse contract",
+  "issueId": 193,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/193"
+}
