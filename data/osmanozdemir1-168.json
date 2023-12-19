@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "osmanozdemir1",
+  "risk": "2",
+  "title": "The voting power of the `erc721VotingToken` that is on auction at the moment when an art piece is created should not be included in the `ArtPiece.totalVotesSupply` since it can not be used by anyone for voting.",
+  "issueId": 168,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/168"
+}
