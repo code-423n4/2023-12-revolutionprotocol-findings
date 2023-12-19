@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "SpicyMeatball",
+  "risk": "2",
+  "title": "ERC20TokenEmitter lacks slippage protection",
+  "issueId": 150,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/150"
+}
