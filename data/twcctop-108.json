@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "twcctop",
+  "risk": "2",
+  "title": "`createPiece` doesn't have the check that all the sum of basis points in `creatorArray` must be exactly 10,000.",
+  "issueId": 108,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/108"
+}
