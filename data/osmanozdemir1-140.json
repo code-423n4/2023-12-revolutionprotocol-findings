@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "osmanozdemir1",
+  "risk": "3",
+  "title": "Purchasing vote tokens in the same block after creating the art piece grants the right to vote without increasing the vote supply, thereby making it easier to reach a quorum",
+  "issueId": 140,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/140"
+}
