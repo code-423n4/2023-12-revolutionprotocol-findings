@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "passteque",
+  "risk": "3",
+  "title": "Memory OOG can block auction._settleAuction()",
+  "issueId": 143,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/143"
+}
