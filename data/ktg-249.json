@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ktg",
+  "risk": "3",
+  "title": "Auction cannot be settled in case if buyToken amount is small enough",
+  "issueId": 249,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/249"
+}
