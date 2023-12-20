@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "0x7070",
+  "risk": "2",
+  "title": "Failure to reach vote quorum pauses protocol and conditionally locks unpause.",
+  "issueId": 283,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/283"
+}
