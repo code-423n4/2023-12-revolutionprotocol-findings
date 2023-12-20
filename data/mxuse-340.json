@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "mxuse",
+  "risk": "3",
+  "title": "Voting system can be abused because initializer is missing 'minVoteWeight > 0' check",
+  "issueId": 340,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/340"
+}
