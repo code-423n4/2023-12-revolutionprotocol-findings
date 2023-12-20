@@ -44,6 +44,7 @@ https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revo
 +++        emit MinterUnLocked();
 +++    }
 ```
+Other instances of this vulnerability can be found at [L240](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revolution/src/VerbsToken.sol#L240) & [L260](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revolution/src/VerbsToken.sol#L260)
 ### Report 4:
 #### Incomplete Code Implementation
 As noted in the code below necessary security considerations should be added based on block created to prevent flash attacks.
