@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Dots",
+  "risk": "2",
+  "title": "Missing check for repeating entries in validateCreatorsArray function",
+  "issueId": 304,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/304"
+}
