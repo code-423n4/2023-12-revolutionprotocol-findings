@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "DanielArmstrong",
+  "risk": "3",
+  "title": "ERC20TokenEmitter.sol#buyToken: More governance tokens than the calculation of VRGDA formula will be minted.",
+  "issueId": 237,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/237"
+}
