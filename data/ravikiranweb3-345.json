@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ravikiranweb3",
+  "risk": "2",
+  "title": "VerbsToken::burn should essentially make the token unavailable",
+  "issueId": 345,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/345"
+}
