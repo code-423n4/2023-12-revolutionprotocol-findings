@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "AS",
+  "risk": "3",
+  "title": "Malicious contract for creatorsAddress can make a auction system stuck",
+  "issueId": 321,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/321"
+}
