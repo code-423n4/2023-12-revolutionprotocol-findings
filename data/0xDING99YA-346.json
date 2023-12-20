@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "0xDING99YA",
+  "risk": "2",
+  "title": "buyToken() in ERC20TokenEmitter.sol lacks a slippage control and user may suffer from a loss",
+  "issueId": 346,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/346"
+}
