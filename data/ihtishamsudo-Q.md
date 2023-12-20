@@ -66,7 +66,7 @@ function _verifyVoteSignature(
 ```
 
 ## 2. <a name='L-voteForManyDoesNotEmitEVent'></a> L - ```voteForMany``` does not emit events, so it is difficult to track changes upon succesfull execution
-[RandomizerNXT.sol#L57](https://github.com/code-423n4/2023-10-nextgen/blob/8b518196629faa37eae39736837b24926fd3c07c/hardhat/smart-contracts/RandomizerNXT.sol#L57)
+[CultureIndex.sol#L353](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol#L353)
 
 ```CultureIndex#voteForMany``` is used for casting a vote for a list of artPiece. But it does not emiting event for tracking changes off chain & for succesfull execution confirmation. 
 [_vote](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol#L323) is emiting voteCast Event but 
@@ -121,7 +121,7 @@ function initialize(
 
 ## 3. <a name='L-PushCanResultDos'></a> L - Use of Push Mechanism For Transferring Creators Share Can Result In DoS
 [AuctionHouse.sol#L383-L396](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/AuctionHouse.sol#L383-L396)
-[ultureIndex.sol#L237](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol#L237)
+[CultureIndex.sol#L237](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol#L237)
 
 The ```_settle``` function is responsible for transferring shares to each creator. But it is using [push mechanism](https://youtu.be/8fNNVQv4-oY?t=1020) for transferring shares to each creator. This function iterates through arrays of creators and percentages, calculating the share to transfer to each creator based on their percentage. While the function's purpose is to fairly distribute tokens, a potential vulnerability arises when dealing with a large number of creators and percentages.
 ```solidity
