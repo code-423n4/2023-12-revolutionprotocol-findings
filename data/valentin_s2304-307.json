@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "valentin_s2304",
+  "risk": "2",
+  "title": "User can outbid himself, while extending the auction timer infinetely",
+  "issueId": 307,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/307"
+}
