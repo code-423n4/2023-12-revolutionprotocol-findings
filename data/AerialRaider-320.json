@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "AerialRaider",
+  "risk": "2",
+  "title": "Proposed an additional layer of error handling in the _createAuction function of the AuctionHouse contract, to manage potential failures in the token minting process",
+  "issueId": 320,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/320"
+}
