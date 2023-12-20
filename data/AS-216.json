@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "AS",
+  "risk": "3",
+  "title": "Some portion of ETH will be locked on ERC20TokenEmitter when buy token",
+  "issueId": 216,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/216"
+}
