@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "SpicyMeatball",
+  "risk": "2",
+  "title": "Suboptimal tokens amount calculation in buyToken",
+  "issueId": 241,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/241"
+}
