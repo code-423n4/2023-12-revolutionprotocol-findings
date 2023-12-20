@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "mitev",
+  "risk": "2",
+  "title": "buyToken function can spend more of the block limit gas",
+  "issueId": 251,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/251"
+}
