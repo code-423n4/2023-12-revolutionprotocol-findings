@@ -261,7 +261,9 @@ https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44
 
 ##
 
-## [G-8] Memory variables should be checked before state variables 
+## [G-8] Check Arguments Early
+
+Checks that require() or revert() statements that check input arguments are at the top of the function. Checks that involve constants should come before checks that involve state variables, function calls, and calculations. By doing these checks first, the function is able to revert before wasting a gas load in a function that may ultimately revert in the unhappy case. 
 
 
 ```diff
@@ -279,6 +281,204 @@ FILE: 2023-12-revolutionprotocol/packages/revolution/src/ERC20TokenEmitter.sol
 ```
 https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/ERC20TokenEmitter.sol#L158-L162
 
+```diff
+FILE: 2023-12-revolutionprotocol/packages/revolution/src
+/CultureIndex.sol
+function _vote(uint256 pieceId, address voter) internal {
++        require(voter != address(0), "Invalid voter address");
+  require(pieceId < _currentPieceId, "Invalid piece ID");
+-        require(voter != address(0), "Invalid voter address");
+        require(!pieces[pieceId].isDropped, "Piece has already been dropped");
+        require(!(votes[pieceId][voter].voterAddress != address(0)), "Already voted");
+
+```
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol#L308-L311
+
+##
+
+## [G-9] Optimize the ``maxHeapify()`` function for better gas efficiency 
+
+- Move the check for the position being a leaf node to the beginning of the function to avoid unnecessary computations.
+
+- Delay fetching the values of left and right until after you've confirmed that these positions are valid and need to be accessed. This can save gas if the function exits early or if one of the child nodes does not need to be compared.
+
+- Store results of repeated calculations in local variables to avoid recalculating them.
+
+```diff
+FILE: 2023-12-revolutionprotocol/packages/revolution/src/MaxHeap.sol
+
+-function maxHeapify(uint256 pos) internal {
+-        uint256 left = 2 * pos + 1;
+-        uint256 right = 2 * pos + 2;
+-
+-        uint256 posValue = valueMapping[heap[pos]];
+-        uint256 leftValue = valueMapping[heap[left]];
+-        uint256 rightValue = valueMapping[heap[right]];
+-
+-        if (pos >= (size / 2) && pos <= size) return;
+-
+-        if (posValue < leftValue || posValue < rightValue) {
+-           if (leftValue > rightValue) {
+-                swap(pos, left);
+-                maxHeapify(left);
+-            } else {
+-                swap(pos, right);
+-                maxHeapify(right);
+-            }
+-        }
+-    }
+
++ function maxHeapify(uint256 pos) internal {
++    // Early exit if 'pos' is a leaf node
++    if (pos >= (size / 2) && pos <= size) return;
++
++    uint256 left = 2 * pos + 1;
++    uint256 right = 2 * pos + 2;
++    uint256 size_ = size; // Cache the 'size' to avoid repeated storage access
++
++    // Only fetch 'posValue' once
++    uint256 posValue = valueMapping[heap[pos]];
++
++    // Check if children are within bounds before accessing their values
++    uint256 leftValue = left < size_ ? valueMapping[heap[left]] : 0;
++    uint256 rightValue = right < size_ ? valueMapping[heap[right]] : 0;
++
++    if (posValue < leftValue || posValue < rightValue) {
++        if (leftValue > rightValue) {
++            swap(pos, left);
++            maxHeapify(left);
++        } else {
++            swap(pos, right);
++            maxHeapify(right);
++        }
++    }
++ }
+
+```
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/MaxHeap.sol#L94-L113
+
+### Modified code version
+
+- The function immediately checks if pos is a leaf node and exits if so.
+- The size variable is cached in a local variable size_.
+- The values of leftValue and rightValue are only fetched if left and right are within the bounds of the heap.
+- The function only accesses the valueMapping for pos, left, and right when necessary.
+
+##
+
+## [G-10] Writing state variables inside the emit blocks is not gas efficient
+
+Writing state variables inside the emit block as shown in emit is not an efficient practice in Solidity, particularly from a gas usage perspective. The correct approach is to first assign the new value to the state variable and then emit the event. This separation ensures clarity and efficiency in the contract's operations. As per remix tests mitigation steps saves ``17 GAS`` for every call. 
+
+#### SampleTest
+
+```solidity
+
+contract UncheckedINEDECTest {
+
+    uint a=10;
+    event hit(uint256 h);
+
+    function test(uint256 i) public { //3797 GAS
+
+      emit hit(a=i); 
+     
+    }
+
+    function test1(uint256 i) public { //3780 GAS
+a=i;
+      emit hit(i); 
+
+    }
+
+```
+
+```diff
+FILE: Breadcrumbs2023-12-revolutionprotocol/packages/revolution/src/ERC20TokenEmitter.sol
+
+function setEntropyRateBps(uint256 _entropyRateBps) external onlyOwner {
+        require(_entropyRateBps <= 10_000, "Entropy rate must be less than or equal to 10_000");
++   entropyRateBps = _entropyRateBps ; 
+-        emit EntropyRateBpsUpdated(entropyRateBps = _entropyRateBps);
++        emit EntropyRateBpsUpdated(_entropyRateBps);
+    }
+
+function setCreatorRateBps(uint256 _creatorRateBps) external onlyOwner {
+        require(_creatorRateBps <= 10_000, "Creator rate must be less than or equal to 10_000");
++   creatorRateBps = _creatorRateBps ;
+-        emit CreatorRateBpsUpdated(creatorRateBps = _creatorRateBps);
++        emit CreatorRateBpsUpdated(_creatorRateBps);
+    }
+
+function setCreatorsAddress(address _creatorsAddress) external override onlyOwner nonReentrant {
+        require(_creatorsAddress != address(0), "Invalid address");
++    creatorsAddress = _creatorsAddress ;
+-        emit CreatorsAddressUpdated(creatorsAddress = _creatorsAddress);
++        emit CreatorsAddressUpdated(_creatorsAddress);
+    }
 
 
+```
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/ERC20TokenEmitter.sol#L288C5-L313
+
+##
+
+## [G-11] ``parent(current)`` function return value should be cached with stack variable instead of calling second time
+
+Caching the parent(current) value inside the while loop is indeed a good practice for optimizing the function. This change reduces the number of times the parent function is called, which can lead to gas savings
+
+```diff
+FILE: 2023-12-revolutionprotocol/packages/revolution/src/MaxHeap.sol
+
+124: uint256 current = size;
++ uint256 parent_;
+        while (current != 0 && valueMapping[heap[current]] > valueMapping[heap[parent(current)]]) {
++           parent_ = parent(current) ;
+-            swap(current, parent(current));
++            swap(current, parent_);
+-            current = parent(current);
++            current = parent_;
+        }
+
+
+143: // Decide whether to perform upwards or downwards heapify
+        if (newValue > oldValue) {
+            // Upwards heapify
+            while (position != 0 && valueMapping[heap[position]] > valueMapping[heap[parent(position)]]) {
++      uint256 parent_ = parent(current) ;          
+-                swap(position, parent(position));
++                swap(position, parent_);
+-                position = parent(position);
++                position = parent_;
+            }
+        } else if (newValue < oldValue) maxHeapify(position); // Downwards heapify
+
+```
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/MaxHeap.sol#L124-L128
+
+
+
+Division operations between unsigned could be unchecked
+Severity: Gas Optimization
+Confidence: High
+Total Gas Saved: 255
+Description
+Division operations on unsigned integers should be unchecked to save gas since they cannot overflow or underflow. Because unsigned integers cannot have negative values, execution of division operations outside unchecked blocks adds nothing but overhead. Saves about 85 gas.
+
+There are 3 instances of this issue:
+File: contracts/CdpManagerStorage.sol
+
+567    uint256 _deltaFeePerUnit = _deltaFeeSplitShare / _cachedAllStakes
+
+Modulus operations that could be unchecked
+Severity: Gas Optimization
+Confidence: High
+Total Gas Saved: 85
+Description
+Modulus operations should be unchecked to save gas since they cannot overflow or underflow. Execution of modulus operations outside unchecked blocks adds nothing but overhead. Saves about 30 gas.
+
+There are 1 instances of this issue:
+File: contracts/HintHelpers.sol
+
+184    latestRandomSeed % arrayLength
 
