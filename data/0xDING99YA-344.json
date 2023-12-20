@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "0xDING99YA",
+  "risk": "3",
+  "title": "Verbs tokens allow owner to delegate to address(0), which can result in the loss of votes and block future transfer",
+  "issueId": 344,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/344"
+}
