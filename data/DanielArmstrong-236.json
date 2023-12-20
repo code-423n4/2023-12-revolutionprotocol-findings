@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "DanielArmstrong",
+  "risk": "3",
+  "title": "CultureIndex#createPiece: An attacker can front-run to intercept the original creator's copyright of an art piece.",
+  "issueId": 236,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/236"
+}
