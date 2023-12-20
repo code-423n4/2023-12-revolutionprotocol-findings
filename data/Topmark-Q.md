@@ -69,3 +69,19 @@ function _vote(uint256 pieceId, address voter) internal {
         emit VoteCast(pieceId, voter, weight, totalWeight);
     }
 ```
+### Report 5:
+#### Unnecessary Validation
+From the code provided below a validation is done to check if "msgValue" is less than "computeTotalReward(msgValue)", the problem with this is that there is no way this can ever be possible as computeTotalReward(...) returns 2.5% of "msgValue", so the validation check is not necessary.
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/protocol-rewards/src/abstract/TokenEmitter/TokenEmitterRewards.sol#L18
+```solidity
+   function _handleRewardsAndGetValueToSend(
+        uint256 msgValue,
+        address builderReferral,
+        address purchaseReferral,
+        address deployer
+    ) internal returns (uint256) {
+>>>        if (msgValue < computeTotalReward(msgValue)) revert INVALID_ETH_AMOUNT();
+
+        return msgValue - _depositPurchaseRewards(msgValue, builderReferral, purchaseReferral, deployer);
+    }
+```
