@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "darksnow",
+  "risk": "2",
+  "title": "Transferred ERC721 can be stuck permanently",
+  "issueId": 255,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/255"
+}
