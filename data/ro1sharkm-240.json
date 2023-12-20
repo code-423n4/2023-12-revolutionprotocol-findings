@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ro1sharkm",
+  "risk": "2",
+  "title": "The lack of a safety check in token transfers could lead to potential token loss for the winning bidder.",
+  "issueId": 240,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/240"
+}
