@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "lsaudit",
+  "risk": "2",
+  "title": "Voting tokens can be forever locked because of the lack of deadline",
+  "issueId": 351,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/351"
+}
