@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Stormreckson",
+  "risk": "3",
+  "title": "Possible DOS if the receiving contract have a fallback function denying ETH acceptance",
+  "issueId": 233,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/233"
+}
