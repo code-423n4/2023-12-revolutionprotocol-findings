@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ravikiranweb3",
+  "risk": "2",
+  "title": "NontransferableERC20Votes does not derive from UUPS contract that handles Openzepplin's UUPSUpgradeable contract. Therefore, it is missing the authorise upgrade method, and the contract cannot be upgraded incase it needs to be upgraded at later point.",
+  "issueId": 219,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/219"
+}
