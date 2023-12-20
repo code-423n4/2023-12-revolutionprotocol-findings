@@ -35,6 +35,36 @@ Here is OZ recommendation in EIP712Upgradeable Library
 #### Recommendation 
 Use OZ's ECDSA to prevent malleablitiy issues and also to follow best practices.
 
+```diff
+function _verifyVoteSignature(
+        address from,
+        uint256[] calldata pieceIds,
+        uint256 deadline,
+        uint8 v,
+        bytes32 r,
+        bytes32 s
+    ) internal returns (bool success) {
+        require(deadline >= block.timestamp, "Signature expired");  //@audit-info blocktimestamp check must.
+
+        bytes32 voteHash;
+        // malicious actor can replay signature on other networks due to absence of chainid
+        voteHash = keccak256(abi.encode(VOTE_TYPEHASH, from, pieceIds, nonces[from]++, deadline));
+        //@audit-issue vote can be replay if fail?
+        bytes32 digest = _hashTypedDataV4(voteHash);
+        // ECDSA
+-        address recoveredAddress = ecrecover(digest, v, r, s);
++        address recoveredAddress = ECDSA.recover(digest, v, r, s);
+
+        // Ensure to address is not 0   //@audit typo (from)
+        if (from == address(0)) revert ADDRESS_ZERO();
+
+        // Ensure signature is valid
+        if (recoveredAddress == address(0) || recoveredAddress != from) revert INVALID_SIGNATURE();
+
+        return true;
+    }
+```
+
 ## 2. <a name='L-voteForManyDoesNotEmitEVent'></a> L - ```voteForMany``` does not emit events, so it is difficult to track changes upon succesfull execution
 [RandomizerNXT.sol#L57](https://github.com/code-423n4/2023-10-nextgen/blob/8b518196629faa37eae39736837b24926fd3c07c/hardhat/smart-contracts/RandomizerNXT.sol#L57)
 
