@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "mrudenko",
+  "risk": "2",
+  "title": "Incorrect Boundary Comparison in `RewardSplits.sol` Leads to Unintended Function Reversion",
+  "issueId": 285,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/285"
+}
