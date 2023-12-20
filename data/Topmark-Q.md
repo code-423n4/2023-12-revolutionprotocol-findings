@@ -25,6 +25,26 @@ https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revo
     }
 ```
 ### Report 3:
+#### Irreversible lock Function
+Purposely having an Irreversible lock function for minter is totally wrong and not user friendly. Since the Owner is given the power to lock minter, a function to unlock in event of needed circumstances is of upmost importance
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revolution/src/VerbsToken.sol#L221
+```solidity
+    /**
+     * @notice Lock the minter.
+     * @dev This cannot be reversed and is only callable by the owner when not locked.
+     */
+    function lockMinter() external override onlyOwner whenMinterNotLocked {
+        isMinterLocked = true;
+
+        emit MinterLocked();
+    }
++++   function UnlockMinter() external override onlyOwner {
++++        isMinterLocked = false;
+
++++        emit MinterUnLocked();
++++    }
+```
+### Report 4:
 #### Incomplete Code Implementation
 As noted in the code below necessary security considerations should be added based on block created to prevent flash attacks.
 https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revolution/src/CultureIndex.sol#L321
