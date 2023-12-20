@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Hama",
+  "risk": "3",
+  "title": "Risk of Arbitrary Code Execution and Self-Destruct thro low call during refunding bid",
+  "issueId": 323,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/323"
+}
