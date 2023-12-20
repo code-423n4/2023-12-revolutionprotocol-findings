@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "valentin_s2304",
+  "risk": "3",
+  "title": "function validateCreatorsArray does not check for address repetition.",
+  "issueId": 303,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/303"
+}
