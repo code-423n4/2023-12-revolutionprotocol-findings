@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "lsaudit",
+  "risk": "2",
+  "title": "`VOTE_TYPEHASH` is not compliant with EIP-712",
+  "issueId": 353,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/353"
+}
