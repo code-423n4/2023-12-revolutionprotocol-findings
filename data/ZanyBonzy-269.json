@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ZanyBonzy",
+  "risk": "2",
+  "title": "The `VerbsToken` contract lacks `supportsinterface`",
+  "issueId": 269,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/269"
+}
