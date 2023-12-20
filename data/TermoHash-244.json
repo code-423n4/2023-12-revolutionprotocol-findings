@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "TermoHash",
+  "risk": "2",
+  "title": "_settleAuction address(this).balance check can lead to a loss of funds and reward token for owner and creators.",
+  "issueId": 244,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/244"
+}
