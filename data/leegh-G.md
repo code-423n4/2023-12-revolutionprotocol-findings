@@ -148,3 +148,20 @@ File: packages/protocol-rewards/src/abstract/RewardSplits.sol
 64:    }
 ```
 [RewardSplits.sol#L54-L64](https://github.com/code-423n4/2023-12-revolutionprotocol/tree/main/packages/protocol-rewards/src/abstract/RewardSplits.sol#L54-L64)
+
+## [G-11] Consider merging `if` statements with same conditions.
+Merge `if` statements (`L192` and `L199`) if they share the same conditions to save one condition comparision.
+```solidity
+File: packages/revolution/src/AuctionHouse.sol
+
+191:        bool extended = _atuction.endTime - block.timestamp < timeBuffer;
+192:        if (extended) aucion.endTime = _auction.endTime = block.timestamp + timeBuffer; // @audit
+193:
+194:        // Refund the last bidder, if applicable
+195:        if (lastBidder != address(0)) _safeTransferETHWithFallback(lastBidder, _auction.amount);
+196:
+197:        emit AuctionBid(_auction.verbId, bidder, msg.sender, msg.value, extended);
+198:
+199:        if (extended) emit AuctionExtended(_auction.verbId, _auction.endTime); // @audit
+``` 
+[AuctionHouse.sol#L191-L199](https://github.com/code-423n4/2023-12-revolutionprotocol/tree/main/packages/revolution/src/AuctionHouse.sol#L191-L199)
