@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Stormreckson",
+  "risk": "3",
+  "title": "insufficient balance check is leading to transaction reversion",
+  "issueId": 232,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/232"
+}
