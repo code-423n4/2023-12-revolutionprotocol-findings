@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "AerialRaider",
+  "risk": "2",
+  "title": "Security checks for the ERC20TokenEmitter contract that collectively address potential risks related to ERC20TokenEmitter invariants",
+  "issueId": 312,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/312"
+}
