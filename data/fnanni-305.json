@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "fnanni",
+  "risk": "2",
+  "title": "settleAuction in AuctionHose.sol can revert if erc20TokenEmitter.buyToken() reverts",
+  "issueId": 305,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/305"
+}
