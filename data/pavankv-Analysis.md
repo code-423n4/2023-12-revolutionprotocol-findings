@@ -7,7 +7,7 @@ Analysis Report :-
 | 2  | Architecture view(Diagram)  |
 | 3  | Approach taken in evaluating the codebase  |
 | 4  | Centralization risks  |
-| 5 | Mechanism review  |
+| 5  | Mechanism review  |
 | 6  | Recommendation   |
 | 7  | Hours spend  |
 
@@ -22,9 +22,7 @@ Revolution protocol aims to make governance token ownership more accessible by o
 ![FlowChart](https://user-images.githubusercontent.com/69415766/291059531-928c202c-5cd3-4b5e-b6a3-27715f082e49.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MDI4MjEzODAsIm5iZiI6MTcwMjgyMTA4MCwicGF0aCI6Ii82OTQxNTc2Ni8yOTEwNTk1MzEtOTI4YzIwMmMtNWNkMy00YjVlLWI2YTMtMjc3MTVmMDgyZTQ5LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzEyMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMjE3VDEzNTEyMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTgwN2Q5ZGM2NmM5MjZiYWUwODEwMjRhOTdhNzEyMzEyZmFkMjFjMmI2MGQ0ZTlkNDk1MWJjNGE0ZjhmOWE4MTgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.LalANz0sZlxIyzjJm-K8DYUcnoh_Uq10UhNpHafOSpg)
 
 Please Visit link to full view of diagram :-
-https://lucid.app/lucidchart/8b9c4122-c00f-4d4b-9cd1-c828da2185fd/edit?beaconFlowId=4457157C27F2E5DF&invitationId=inv_1bc46c7c-2b69-4f2c-853e-8c1198064da2&page=0_0#
 
-or 
 http://icp-tool.rf.gd/Revolution.png
 
 
@@ -217,6 +215,18 @@ The value of `paymentAmountWei` variable of the function argument could be 0.000
 5. Add mechanism to check the total supply of tokens is greater than zero or minimum amount before calculating vote weight of a voter or cultureIndex contract.
 
 6. Currently, Noun DAO auctions operate sequentially, with each new auction beginning only after the previous one concludes. Revolution Protocol can proposes new idea to modify this traditional approach by enabling the simultaneous auctioning of multiple verbs. This could be achieved by replacing the singular auction house contract with a data structure like a mapping, associating verbs with their respective auctioning process information.
+
+## 7. Hours spend
+45 hours(Gas finding , QA findings and Analysis report)
+
+**Note :-**
+Considered the following points to judge 
+
+Highlights of the report
+1.Representing the smart contract working flow through the diagram.
+2.Extensive analysis of contract by contract and function by function analysis.
+3.Comparison table with other competitive protocol
+4.Best recommendation which could safely implemented. 
 
 ### Time spent:
 45 hours
