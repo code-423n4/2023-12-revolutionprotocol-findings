@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "DanielArmstrong",
+  "risk": "3",
+  "title": "MaxHeap.sol: Already extracted tokenId may be extracted again.",
+  "issueId": 266,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/266"
+}
