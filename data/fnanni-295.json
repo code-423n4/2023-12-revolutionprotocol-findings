@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "fnanni",
+  "risk": "2",
+  "title": "quorumVotes in CultureIndex can prevent valid pieces from getting dropped",
+  "issueId": 295,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/295"
+}
