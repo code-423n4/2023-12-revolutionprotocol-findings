@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ktg",
+  "risk": "2",
+  "title": "Users cannot createPiece and vote for their pieces at the same block",
+  "issueId": 260,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/260"
+}
