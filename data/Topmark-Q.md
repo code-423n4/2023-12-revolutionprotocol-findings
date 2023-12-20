@@ -12,6 +12,19 @@ https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revo
  ...
 ```
 ### Report 2:
+#### Wrong Comment Description
+The code implementation in the code implementation in the onlyAdmin() modifier does not correlate to the comment description in any way, the comment description seems to be a requirement for a function implementation and not relevant to the modifier.
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revolution/src/MaxHeap.sol#L39
+```solidity
+    /**
+>>>     * @notice Require that the minter has not been locked.
+     */
+    modifier onlyAdmin() {
+        require(msg.sender == admin, "Sender is not the admin");
+        _;
+    }
+```
+### Report 3:
 #### Incomplete Code Implementation
 As noted in the code below necessary security considerations should be added based on block created to prevent flash attacks.
 https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revolution/src/CultureIndex.sol#L321
