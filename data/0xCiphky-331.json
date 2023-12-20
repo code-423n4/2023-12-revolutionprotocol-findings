@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "0xCiphky",
+  "risk": "3",
+  "title": "Unallocated ETH Issue in ERC20TokenEmitter's buyToken Function",
+  "issueId": 331,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/331"
+}
