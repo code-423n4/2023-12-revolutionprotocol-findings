@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "sandy",
+  "risk": "2",
+  "title": "The latest created piece cannot be voted due to off by one error.",
+  "issueId": 296,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/296"
+}
