@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ZanyBonzy",
+  "risk": "2",
+  "title": "`getPastVotes` might not work properly on L2s due to use of `block.number`",
+  "issueId": 277,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/277"
+}
