@@ -30,6 +30,23 @@ However, the function neither reverts when the heap is full nor checks if the he
 
 If it is intended to revert when the heap is full, recommend to add a check for the heap size and revert if the heap is full. If not - recommend to remove the dev comment.
 
+## If no one bids on an art piece, the art piece will be burned and all the votes for it are lost.
+
+In `AuctionHouse` there can be an instance where the auction settles without any bids on an art piece. In this case, the art piece will be burned and all the votes for it are lost.
+
+[`AuctionHouse._settleAuction`](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revolution/src/AuctionHouse.sol#L356-L359)
+
+```solidity
+    //If no one has bid, burn the Verb
+    if (_auction.bidder == address(0))
+        verbs.burn(_auction.verbId);
+```
+
+The issue is that if this happens, all of the votes for it will be gone since it is not added back into the `CultureIndex` and `MaxHeap` contracts. Meaning that creators lost all the votes for their art piece.
+
+If that is the recommended behavior, no changes necessary.
+If not, recommend to create a mechanism where the art piece is reset back in `CultureIndex` and `MaxHeap` contracts. In this way creators will not need to start from scratch.
+
 ## Incorrect checks in the context of the variable meaning
 
 1. [`RewardsSplits.computeTotalReward`](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/protocol-rewards/src/abstract/RewardSplits.sol#L40-L52)
@@ -81,3 +98,4 @@ Recommend to reset the `valueMapping` and `positionMapping` when `MaxHeap.extrac
         return (popped, value);
     }
 ```
+
