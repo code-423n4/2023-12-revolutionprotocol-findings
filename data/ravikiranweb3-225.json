@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ravikiranweb3",
+  "risk": "2",
+  "title": "ERC20TokenEmitter::buyToken can result in loss of Eth and tokens will not be minted",
+  "issueId": 225,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/225"
+}
