@@ -130,6 +130,154 @@ FILE: 2023-12-revolutionprotocol/packages/revolution/src
 https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/AuctionHouse.sol#L47-L72
 
 
+##
+
+## [G-4] Caching the result of the calculation (msgValueRemaining - toPayTreasury) - creatorDirectPayment in a local variable
+
+The expression (msgValueRemaining - toPayTreasury) - creatorDirectPayment is computed once and stored in the local variable calculatedValue.
+calculatedValue is then used in the conditional statement to check if it's greater than 0 and also as an argument in the getTokenQuoteForEther function call.
+This change ensures the calculation is done only once, saving gas that would otherwise be used for repeated computation
+
+```diff
+FILE: 2023-12-revolutionprotocol/packages/revolution/src/ERC20TokenEmitter.sol
+
+ uint256 creatorDirectPayment = ((msgValueRemaining - toPayTreasury) * entropyRateBps) / 10_000;
+
++ uint256 results = (msgValueRemaining - toPayTreasury) - creatorDirectPayment) ;
+        //Tokens to emit to creators
+-        int totalTokensForCreators = ((msgValueRemaining - toPayTreasury) - creatorDirectPayment) > 0
++        int totalTokensForCreators = results > 0
+-            ? getTokenQuoteForEther((msgValueRemaining - toPayTreasury) - creatorDirectPayment)
++            ? getTokenQuoteForEther(results)
+            : int(0);
+
+```
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/ERC20TokenEmitter.sol#L177-L181
+
+##
+
+## [G-5] ``creatorsAddress`` and ``treasury``  storage variables should be cached with stack variable
+ 
+This caching ``creatorsAddress`` and ``treasury`` reduces the number of read operations on the storage, which can be significantly more expensive than memory operations. Saves ``400 GAS`` , ``4 SLOD``
+
+```diff
+FILE: 2023-12-revolutionprotocol/packages/revolution/src/ERC20TokenEmitter.sol
+
+ ) public payable nonReentrant whenNotPaused returns (uint256 tokensSoldWad) {
+        //prevent treasury from paying itself
++     address creatorsAddress_ = creatorsAddress ;
++     address treasury_ = treasury ;
+-        require(msg.sender != treasury && msg.sender != creatorsAddress, "Funds recipient cannot buy tokens");
++        require(msg.sender != treasury_ && msg.sender != creatorsAddress_ , "Funds recipient cannot buy tokens");
+
+        require(msg.value > 0, "Must send ether");
+        // ensure the same number of addresses and bps
+        require(addresses.length == basisPointSplits.length, "Parallel arrays required");
+
+        // Get value left after protocol rewards
+        uint256 msgValueRemaining = _handleRewardsAndGetValueToSend(
+            msg.value,
+            protocolRewardsRecipients.builder,
+            protocolRewardsRecipients.purchaseReferral,
+            protocolRewardsRecipients.deployer
+        );
+
+        //Share of purchase amount to send to treasury
+        uint256 toPayTreasury = (msgValueRemaining * (10_000 - creatorRateBps)) / 10_000;
+
+        //Share of purchase amount to reserve for creators
+        //Ether directly sent to creators
+        uint256 creatorDirectPayment = ((msgValueRemaining - toPayTreasury) * entropyRateBps) / 10_000;
+        //Tokens to emit to creators
+        int totalTokensForCreators = ((msgValueRemaining - toPayTreasury) - creatorDirectPayment) > 0
+            ? getTokenQuoteForEther((msgValueRemaining - toPayTreasury) - creatorDirectPayment)
+            : int(0);
+
+        // Tokens to emit to buyers
+        int totalTokensForBuyers = toPayTreasury > 0 ? getTokenQuoteForEther(toPayTreasury) : int(0);
+
+        //Transfer ETH to treasury and update emitted
+        emittedTokenWad += totalTokensForBuyers;
+        if (totalTokensForCreators > 0) emittedTokenWad += totalTokensForCreators;
+
+        //Deposit funds to treasury
+-        (bool success, ) = treasury.call{ value: toPayTreasury }(new bytes(0));
++        (bool success, ) = treasury_.call{ value: toPayTreasury }(new bytes(0));
+
+         require(success, "Transfer failed.");
+
+        //Transfer ETH to creators
+        if (creatorDirectPayment > 0) {
+-            (success, ) = creatorsAddress.call{ value: creatorDirectPayment }(new bytes(0));
++            (success, ) = creatorsAddress_ .call{ value: creatorDirectPayment }(new bytes(0));
+            require(success, "Transfer failed.");
+        }
+
+        //Mint tokens for creators
+-        if (totalTokensForCreators > 0 && creatorsAddress != address(0)) {
++        if (totalTokensForCreators > 0 && creatorsAddress_ != address(0)) {
+-            _mint(creatorsAddress, uint256(totalTokensForCreators));
++            _mint(creatorsAddress_ , uint256(totalTokensForCreators));
+        }
+
+```
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/ERC20TokenEmitter.sol#L158-L203
+
+##
+
+## [G-6] ``timeBuffer`` storage variables should be cached with stack variable
+
+```diff
+FILE: 2023-12-revolutionprotocol/packages/revolution/src/AuctionHouse.sol
+
+// Extend the auction if the bid was received within `timeBuffer` of the auction end time
++  uint256 timeBuffer_ = timeBuffer ;
+-        bool extended = _auction.endTime - block.timestamp < timeBuffer;
++        bool extended = _auction.endTime - block.timestamp < timeBuffer_;
+-        if (extended) auction.endTime = _auction.endTime = block.timestamp + timeBuffer;
++        if (extended) auction.endTime = _auction.endTime = block.timestamp + timeBuffer_ ;
+
+```
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/AuctionHouse.sol#L191-L192
+
+##
+
+## [G-7] ``size`` storage variable should be cached with stack variable 
+
+Caching the ``size`` storage variable on the stack can lead to gas savings, especially in a context where size is accessed multiple times within a function. Saves ``100 GAS``
+
+```diff
+FILE: 2023-12-revolutionprotocol/packages/revolution/src/MaxHeap.sol
+
+ uint256 rightValue = valueMapping[heap[right]];
++   uint256 size_ = size ;
+-        if (pos >= (size / 2) && pos <= size) return;
++        if (pos >= (size_ / 2) && pos <= size_) return;
+
+        if (posValue < leftValue || posValue < rightValue) {
+
+```
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/MaxHeap.sol#L102
+
+##
+
+## [G-8] Memory variables should be checked before state variables 
+
+
+```diff
+FILE: 2023-12-revolutionprotocol/packages/revolution/src/ERC20TokenEmitter.sol
+
+) public payable nonReentrant whenNotPaused returns (uint256 tokensSoldWad) {
+        //prevent treasury from paying itself
+-        require(msg.sender != treasury && msg.sender != creatorsAddress, "Funds recipient cannot buy tokens");
+
+        require(msg.value > 0, "Must send ether");
+        // ensure the same number of addresses and bps
+        require(addresses.length == basisPointSplits.length, "Parallel arrays required");
++   require(msg.sender != treasury && msg.sender != creatorsAddress, "Funds recipient cannot buy tokens");
+
+```
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/ERC20TokenEmitter.sol#L158-L162
 
 
 
