@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "leegh",
+  "risk": "2",
+  "title": "Contracts `VerbsToken.sol` and `ERC20TokenEmitter.sol` can not be upgraded.",
+  "issueId": 239,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/239"
+}
