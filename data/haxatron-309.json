@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "haxatron",
+  "risk": "2",
+  "title": "quorumVotes is determined at creation time and not time when a vote succeeded",
+  "issueId": 309,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/309"
+}
