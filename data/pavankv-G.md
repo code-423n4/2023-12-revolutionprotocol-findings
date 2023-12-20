@@ -65,11 +65,11 @@ In above recommendation removes the redundant variable creation, assigns and mem
   |
 | Variable Usage   | Uses `_artPiece` memory variable  | No additional memory variable  | After
   |
-| Storage Access   | Reads artPiece memory variable repeatedly  | Reads from and writes to artPieces mapping directly  | After
+| Storage Access   | Reads artPiece memory variable repeatedly  | Reads from and writes to artPieces memory variable directly  | After
   |
 | Loops  | Loops through artPiece.creators array to copy data  | Loops through artPiece.creators array to copy data (assuming copy-on-write behavior)  | Both
   |
-| Events Emitted  | Emits VerbCreated event  | mits VerbCreated event  | Both  |
+| Events Emitted  | Emits VerbCreated event  | Emits VerbCreated event  | Both  |
 | Gas Cost  | Potentially high due to memory reads and loop  | Possibly lower due to fewer operations  | After   |
 
 code snippet:-
