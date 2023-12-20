@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "AS",
+  "risk": "3",
+  "title": "Auction System will be stuck depending on some parameters like auction amount, creatorRateBps, entropyRateBps, reservePrice",
+  "issueId": 306,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/306"
+}
