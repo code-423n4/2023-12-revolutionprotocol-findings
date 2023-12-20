@@ -13,7 +13,25 @@ But implemented newQuorumVotesBPS is lesser than or equal to the maximum settabl
    require(newQuorumVotesBPS <= MAX_QUORUM_VOTES_BPS, "CultureIndex::_setQuorumVotesBPS: invalid quorum bps");
 ```
 
-## [02] Solidity version might not work in L2 chain
+## [02] creatorsAddress can revert the execution of buyToken function
+
+
+If `ERC20TokenEmitter::creatorsAddress` is a smart contract or a smart contract that reverts in the `fallback`, the `ERC20TokenEmitter::buyToken` will revert and token can't be bought.
+
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/ERC20TokenEmitter.sol#L196
+
+```
+   contract CreatorsAddressContract {
+
+    fallback() external payable {
+        revert('Revert Buytoken');
+      }
+
+   }
+```
+
+
+## [03] Solidity version might not work in L2 chain
 
 All contract are compiled in Solidity version 0.8.20
 
@@ -25,4 +43,4 @@ In Solc compiler version 0.8.20, the default target EVM version has been switche
 
 Checking optimisim contracts and they use pragma solidity >0.5.0 <0.8.0 and others pragma solidity 0.8.15;
 
-Failure to select the appropriate EVM version may result in deployment issues for your contracts.
+Failure to select the appropriate EVM version may result in deployment issues for the contracts.
