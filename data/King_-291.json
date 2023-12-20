@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "King_",
+  "risk": "2",
+  "title": "ArtPieces created during token auction will have excess quorum requirement if token gets no bids and is burned",
+  "issueId": 291,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/291"
+}
