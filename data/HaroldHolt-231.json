@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "HaroldHolt",
+  "risk": "2",
+  "title": "CultureIndex::verifyVoteSignature is vulnerable to crosschain replay attacks due to no chain.id.",
+  "issueId": 231,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/231"
+}
