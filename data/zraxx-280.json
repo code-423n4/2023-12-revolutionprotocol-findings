@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "zraxx",
+  "risk": "2",
+  "title": "In buyToken, emittedTokenWad will be incremented by the wrong amount causing inconsistency",
+  "issueId": 280,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/280"
+}
