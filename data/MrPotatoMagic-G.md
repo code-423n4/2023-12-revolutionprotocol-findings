@@ -20,6 +20,7 @@
 | [G-16] | Remove `msgValue < computeTotalReward(msgValue` check from TokenEmitterRewards.sol contract             |
 | [G-17] | Optimize `computeTotalReward()` and `computePurchaseRewards` into one function to save gas              |
 | [G-18] | Calculation in computeTotalReward() can be simplified to save gas                                       |
+| [G-19] | Negating twice in require check is not required in _vote() function                                     |
 
 **Optimizations have been focused on specific contracts/functions as requested by the sponsor in the README [here under Gas Reports](https://code4rena.com/audits/2023-12-revolution-protocol#toc-2-gas-reports).**
 
@@ -395,4 +396,19 @@ File: RewardSplits.sol
 45:         return
 46:             (paymentAmountWei * (BUILDER_REWARD_BPS + PURCHASE_REFERRAL_BPS + DEPLOYER_REWARD_BPS + REVOLUTION_REWARD_BPS)) / 10_000;
 47:     }
+```
+
+## [G-19] Negating twice in require check is not required in _vote() function
+
+The require check below can just use == instead of negating twice to ensure voter has already voted or not.
+
+Instead of this:
+```solidity
+File: CultureIndex.sol
+315:         require(!(votes[pieceId][voter].voterAddress != address(0)), "Already voted");
+```
+Use this:
+```solidity
+File: CultureIndex.sol
+315:         require(votes[pieceId][voter].voterAddress == address(0), "Already voted");
 ```
