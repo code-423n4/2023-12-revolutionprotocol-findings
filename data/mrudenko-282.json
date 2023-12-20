@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "mrudenko",
+  "risk": "2",
+  "title": "Unchecked Zero Address in `creatorAddress` Breaks Token Minting Functionality",
+  "issueId": 282,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/282"
+}
