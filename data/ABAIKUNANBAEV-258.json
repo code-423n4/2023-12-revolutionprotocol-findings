@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ABAIKUNANBAEV",
+  "risk": "2",
+  "title": "The user can front-run the creation of art piece by sending his verbId to another account",
+  "issueId": 258,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/258"
+}
