@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "King_",
+  "risk": "2",
+  "title": "All art pieces created before the first token auction can be dropped and auctioned due to 0 quorum",
+  "issueId": 326,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/326"
+}
