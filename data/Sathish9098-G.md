@@ -456,29 +456,107 @@ FILE: 2023-12-revolutionprotocol/packages/revolution/src/MaxHeap.sol
 ```
 https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/MaxHeap.sol#L124-L128
 
+##
+
+## [G-12]   newPiece.totalVotesSupply state variable value should be cached 
+
+```diff
+FILE: 2023-12-revolutionprotocol/packages/revolution/src/CultureIndex.sol
+
+       newPiece.creationBlock = block.number;
++   uint256 totalVotesSupply_ = newPiece.totalVotesSupply;
+-        newPiece.quorumVotes = (quorumVotesBPS * newPiece.totalVotesSupply) / 10_000;
++        newPiece.quorumVotes = (quorumVotesBPS * totalVotesSupply_ ) / 10_000;
+
+        for (uint i; i < creatorArrayLength; i++) {
+            newPiece.creators.push(creatorArray[i]);
+        }
+
+-        emit PieceCreated(pieceId, msg.sender, metadata, newPiece.quorumVotes, newPiece.totalVotesSupply);
++        emit PieceCreated(pieceId, msg.sender, metadata, newPiece.quorumVotes, totalVotesSupply_ );
+
+`
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol#L233-L240
+
+##
+
+## [G-13] computePurchaseRewards functions can be more gas optimized
 
 
-Division operations between unsigned could be unchecked
-Severity: Gas Optimization
-Confidence: High
-Total Gas Saved: 255
-Description
-Division operations on unsigned integers should be unchecked to save gas since they cannot overflow or underflow. Because unsigned integers cannot have negative values, execution of division operations outside unchecked blocks adds nothing but overhead. Saves about 85 gas.
+Combine Calculations: Calculate each reward component once and use these calculations both for populating the RewardsSettings struct and for computing the total reward. This avoids duplicating the same multiplication and division operations.
 
-There are 3 instances of this issue:
-File: contracts/CdpManagerStorage.sol
+Direct Total Reward Computation: Instead of calling computeTotalReward, directly compute the total reward in computePurchaseRewards using the already calculated components.
 
-567    uint256 _deltaFeePerUnit = _deltaFeeSplitShare / _cachedAllStakes
+#### Original Code
 
-Modulus operations that could be unchecked
-Severity: Gas Optimization
-Confidence: High
-Total Gas Saved: 85
-Description
-Modulus operations should be unchecked to save gas since they cannot overflow or underflow. Execution of modulus operations outside unchecked blocks adds nothing but overhead. Saves about 30 gas.
+```diff
+FILE : Breadcrumbs2023-12-revolutionprotocol/packages/protocol-rewards/src/abstract
+/RewardSplits.sol
 
-There are 1 instances of this issue:
-File: contracts/HintHelpers.sol
+function computeTotalReward(uint256 paymentAmountWei) public pure returns (uint256) {
+        if (paymentAmountWei <= minPurchaseAmount || paymentAmountWei >= maxPurchaseAmount) revert INVALID_ETH_AMOUNT();
 
-184    latestRandomSeed % arrayLength
+        return
+            (paymentAmountWei * BUILDER_REWARD_BPS) /
+            10_000 +
+            (paymentAmountWei * PURCHASE_REFERRAL_BPS) /
+            10_000 +
+            (paymentAmountWei * DEPLOYER_REWARD_BPS) /
+            10_000 +
+            (paymentAmountWei * REVOLUTION_REWARD_BPS) /
+            10_000;
+    }
+
+    function computePurchaseRewards(uint256 paymentAmountWei) public pure returns (RewardsSettings memory, uint256) {
+        return (
+            RewardsSettings({
+                builderReferralReward: (paymentAmountWei * BUILDER_REWARD_BPS) / 10_000,
+                purchaseReferralReward: (paymentAmountWei * PURCHASE_REFERRAL_BPS) / 10_000,
+                deployerReward: (paymentAmountWei * DEPLOYER_REWARD_BPS) / 10_000,
+                revolutionReward: (paymentAmountWei * REVOLUTION_REWARD_BPS) / 10_000
+            }),
+            computeTotalReward(paymentAmountWei)
+        );
+    }
+
+
+```
+
+#### Optimized Code
+
+This approach eliminates the need for the separate computeTotalReward function call, reducing the gas cost associated with redundant calculations
+
+```solidity
+
+function computePurchaseRewards(uint256 paymentAmountWei) public pure returns (RewardsSettings memory, uint256) {
+    // Check if paymentAmountWei is within valid range
+    if (paymentAmountWei <= minPurchaseAmount || paymentAmountWei >= maxPurchaseAmount) {
+        revert INVALID_ETH_AMOUNT();
+    }
+
+    // Calculate each reward component
+    uint256 builderReferralReward = (paymentAmountWei * BUILDER_REWARD_BPS) / 10_000;
+    uint256 purchaseReferralReward = (paymentAmountWei * PURCHASE_REFERRAL_BPS) / 10_000;
+    uint256 deployerReward = (paymentAmountWei * DEPLOYER_REWARD_BPS) / 10_000;
+    uint256 revolutionReward = (paymentAmountWei * REVOLUTION_REWARD_BPS) / 10_000;
+
+    // Compute the total reward
+    uint256 totalReward = builderReferralReward + purchaseReferralReward + deployerReward + revolutionReward;
+
+    return (
+        RewardsSettings({
+            builderReferralReward: builderReferralReward,
+            purchaseReferralReward: purchaseReferralReward,
+            deployerReward: deployerReward,
+            revolutionReward: revolutionReward
+        }),
+        totalReward
+    );
+}
+
+```
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/protocol-rewards/src/abstract/RewardSplits.sol#L40-L64
+
+
+
 
