@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "KupiaSec",
+  "risk": "2",
+  "title": "Auction can't be settled if entropyRateBps is zero",
+  "issueId": 465,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/465"
+}
