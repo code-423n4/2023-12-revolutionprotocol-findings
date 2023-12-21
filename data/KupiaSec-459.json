@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "KupiaSec",
+  "risk": "2",
+  "title": "ProtocolRewardAddresses: users can steal builder's reward by setting protocol reward addresses as themselves",
+  "issueId": 459,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/459"
+}
