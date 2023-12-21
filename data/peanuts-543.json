@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "peanuts",
+  "risk": "2",
+  "title": "Malicious art creator can stall the auction by making the caller of _settleAuction() pay a high gas price in order for auction to continue running",
+  "issueId": 543,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/543"
+}
