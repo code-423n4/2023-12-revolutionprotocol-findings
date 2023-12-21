@@ -1,3 +1,46 @@
+## Callers/buyers can control `protocolRewardsRecipients` to receive self-rebates
+The `ERC20TokenEmitter.buyToken()` function is designed in such a way that the caller (or buyer) can fully control the `protocolRewardsRecipients` parameter, which includes the `builder`, `purchaseReferral`, and `deployer` addresses. This design allows the caller to potentially assign all these addresses to themselves.
+
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revolution/src/ERC20TokenEmitter.sol#L152-L170
+
+```solidity
+    function buyToken(
+        address[] calldata addresses,
+        uint[] calldata basisPointSplits,
+        ProtocolRewardAddresses calldata protocolRewardsRecipients
+    ) public payable nonReentrant whenNotPaused returns (uint256 tokensSoldWad) {
+        //prevent treasury from paying itself
+        require(msg.sender != treasury && msg.sender != creatorsAddress, "Funds recipient cannot buy tokens");
+
+        require(msg.value > 0, "Must send ether");
+        // ensure the same number of addresses and bps
+        require(addresses.length == basisPointSplits.length, "Parallel arrays required");
+
+        // Get value left after protocol rewards
+        uint256 msgValueRemaining = _handleRewardsAndGetValueToSend(
+            msg.value,
+            protocolRewardsRecipients.builder,
+            protocolRewardsRecipients.purchaseReferral,
+            protocolRewardsRecipients.deployer
+        );
+```
+Given this setup, if a caller assigns all three addresses (builder, purchaseReferral, deployer) to themselves, they could indeed benefit from the rewards percentages assigned to each of these roles. In the code, the basis points (BPS) for each reward are defined as constants:
+
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/protocol-rewards/src/abstract/RewardSplits.sol#L17-L21
+
+- BUILDER_REWARD_BPS = 100 BPS (0.1%)
+- PURCHASE_REFERRAL_BPS = 50 BPS (0.05%)
+- DEPLOYER_REWARD_BPS = 25 BPS (0.025%)
+
+When summed up, these total to 1.75% (175 BPS). So, if the buyer sets themselves as the recipient for all these rewards, they would effectively be receiving a 1.75% reward on their purchase value.
+
+This could be a feature or a vulnerability, depending on the intended use and design of the contract:
+
+1. **Feature**: If this mechanism is intentional, it might be designed to incentivize certain behaviors, like encouraging users to participate more actively in the ecosystem or rewarding them for different roles they play.
+2. **Vulnerability**: If this was not an intended use case, it could be exploited by users to unjustly reward themselves, undermining the fairness of the reward distribution system.
+
+To address this, if it's deemed a vulnerability, the smart contract could be updated to include checks that prevent the same address from being used for all these roles or to implement a more robust system for assigning these rewards. This requires careful consideration of the contract's intended economics and security implications.
+
 ## Irreversible correction if `minCreatorRateBps` has been set too high
 `AuctionHouse.setMinCreatorRateBps()` require new min rate cannot be lower than previous min rate:
 
