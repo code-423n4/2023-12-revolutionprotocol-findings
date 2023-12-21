@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "pep7siup",
+  "risk": "2",
+  "title": "Violation of ERC-721 Standard in VerbsToken:tokenURI Implementation",
+  "issueId": 471,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/471"
+}
