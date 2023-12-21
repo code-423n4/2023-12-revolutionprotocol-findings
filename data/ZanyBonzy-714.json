@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ZanyBonzy",
+  "risk": "2",
+  "title": "Values depending on the `VRGDAC` contract may be wrongly calculated due to possible precision loss.",
+  "issueId": 714,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/714"
+}
