@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "hals",
+  "risk": "2",
+  "title": "`MaxHeap.extractMax` function doesn't return the element that reached maximum value first in some cases",
+  "issueId": 512,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/512"
+}
