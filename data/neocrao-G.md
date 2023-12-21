@@ -1,4 +1,4 @@
-## TokenEmitterRewards::_handleRewardsAndGetValueToSend() can be optimized to save gas
+## [1] TokenEmitterRewards::_handleRewardsAndGetValueToSend() can be optimized to save gas
 
 `TokenEmitterRewards::_handleRewardsAndGetValueToSend()` inherits from `RewardSplits.sol`, and many methods from `RewardSplits.sol` are used in `TokenEmitterRewards::_handleRewardsAndGetValueToSend()` itself.
 
@@ -90,7 +90,7 @@ Savings:
 | buyToken                                             | 0    | 462    | 533    | 533
 ```
 
-## Fetch the art piece only once in AuctionHouse::_settleAuction() to save gas
+## [2] Fetch the art piece only once in AuctionHouse::_settleAuction() to save gas
 
 Code Reference:
 https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revolution/src/AuctionHouse.sol#L336
