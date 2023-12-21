@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "zhaojie",
+  "risk": "2",
+  "title": "The bid, use the front-running can skip `minBidIncrementPercentage` restrictions.",
+  "issueId": 373,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/373"
+}
