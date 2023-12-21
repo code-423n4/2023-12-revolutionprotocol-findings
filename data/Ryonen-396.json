@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Ryonen",
+  "risk": "2",
+  "title": "XSS attack via nft metadata",
+  "issueId": 396,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/396"
+}
