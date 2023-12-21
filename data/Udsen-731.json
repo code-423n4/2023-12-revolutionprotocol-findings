@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Udsen",
+  "risk": "2",
+  "title": "THE `WETH` FUNDS OF THE PREVIOUS BIDDER CAN GET STUCK IF THE FALLBACK IS CALLED IN THE `_safeTransferETHWithFallback` FUNCTION",
+  "issueId": 731,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/731"
+}
