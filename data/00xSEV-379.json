@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "00xSEV",
+  "risk": "2",
+  "title": "Wrong variable is used to calculate `NontransferableERC20Votes` token price",
+  "issueId": 379,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/379"
+}
