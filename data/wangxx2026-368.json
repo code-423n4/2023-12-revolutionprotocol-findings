@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "wangxx2026",
+  "risk": "2",
+  "title": "When entropyRateBps = 0, buyToken is not executed properly",
+  "issueId": 368,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/368"
+}
