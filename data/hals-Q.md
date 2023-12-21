@@ -10,6 +10,7 @@
 | [L-06](#l-06) | `ERC20TokenEmitter.buyToken` function: totalTokensForCreators is added to the `emittedTokenWad` without checking if it's really minted | Low            |
 | [L-07](#l-07) | The protocol might be eventually not gaining auction profits as the `minCreatorRateBps` can be increased only                          | Low            |
 | [L-08](#l-08) | `ERC20TokenEmitter` contrat: `block.timestamp` can be manipulated by miners                                                            | Low            |
+| [L-09](#l-09) | `AuctionHouse` contrat: users can create bids while the contract is paused                                                             | Low            |
 | [I-01](#l-01) | `CulturalIndex.createPiece`: `creatorArray` could have duplicate addresses                                                             | Informational  |
 | [I-02](#l-02) | Wrong check placement in `ERC20TokenEmitter.buyToken` function                                                                         | Informational  |
 | [I-03](#l-03) | `creatorDirectPayment` is sent to the `creatorsAddress` without checking if the address is not address(0)                              | Informational  |
@@ -25,14 +26,15 @@
 | [I-13](#l-13) | `ERC20TokenEmitter.setCreatorsAddress` function has a redundant modifier                                                               | Informational  |
 | [R-01](#r-01) | Add a function to enable users from disabling their signatures                                                                         | Recommendation |
 | [R-02](#r-01) | `CultureIndex` contract: signatures become invalid if one of the signed art pieces is dropped                                          | Recommendation |
+| [R-03](#r-03) | Pause voting in `CulturalIndex` contract if the `AuctionHouse` contract is paused                                                      | Recommendation |
 
 # Summary
 
 | Severity           | Description                                               | Instances |
 | ------------------ | --------------------------------------------------------- | --------- |
-| Low severity       | Vulnerabilities with medium-low impact and low likelihood | 8         |
+| Low severity       | Vulnerabilities with medium-low impact and low likelihood | 9         |
 | Informational      | Suggestions on best practices and code readability        | 13        |
-| Low Recommendation | Design recommendations                                    | 2         |
+| Low Recommendation | Design recommendations                                    | 3         |
 
 # Low Severity Findings
 
@@ -393,6 +395,29 @@ timeSinceStart: toDaysWadUnsafe(block.timestamp - startTime),
 ## Recommendation
 
 `block.number` can be used instead of `block.timestamp` as it can't be manipulated by miners.
+
+## [L-09] `AuctionHouse` contrat: users can create bids while the contract is paused <a id="l-09" ></a>
+
+## Details
+
+Users can create bids on an auction while the contract is paused.
+
+## Proof of Concept
+
+[ERC20TokenEmitter.createBid function](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/AuctionHouse.sol#L171C4-L171C96)
+
+```javascript
+ function createBid(uint256 verbId, address bidder) external payable override nonReentrant {
+```
+
+## Recommendation
+
+Add `whenNotPaused` modifier to the `createBid` function:
+
+```diff
+- function createBid(uint256 verbId, address bidder) external payable override nonReentrant {
++ function createBid(uint256 verbId, address bidder) external payable override nonReentrant whenNotPaused  {
+```
 
 # Informational Findings
 
@@ -843,3 +868,13 @@ require(!pieces[pieceId].isDropped, "Piece has already been dropped");
 ## Recommendation
 
 Update `_vote` function to return false instead of reverting on a dropped art piece.
+
+## [R-03] Pause voting in `CulturalIndex` contract if the `AuctionHouse` contract is paused <a id="r-03" ></a>
+
+## Details
+
+Pausing the `AuctionHouse`contract means that the top voted art piece can't be extracted to be auctioned; while in the same time voting in the `CulturalIndex` contract is not affected by this pause; this will result in unequal/unfair opportunities for art piec deployers as some of them might be the top voted and elligible for auction at the time the aution is paused, then when the auction is unpaused they might lose their top voted positions and other art pieces are auctioned before them.
+
+## Recommendation
+
+Pause voting if the auction house is paused.
