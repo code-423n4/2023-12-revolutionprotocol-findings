@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "popeye",
+  "risk": "3",
+  "title": " Premature Nonce Incrementation in `CultureIndex::_verifyVoteSignature()`",
+  "issueId": 521,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/521"
+}
