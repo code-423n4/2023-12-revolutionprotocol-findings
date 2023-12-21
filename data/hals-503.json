@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "hals",
+  "risk": "2",
+  "title": "`CulturalIndex._verifyVoteSignature` function: signatures can be replayed across chains",
+  "issueId": 503,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/503"
+}
