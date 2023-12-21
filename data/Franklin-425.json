@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Franklin",
+  "risk": "2",
+  "title": "The require statement in `CultureIndex._vote()` can be bypassed because of logical negation present in the funcition ",
+  "issueId": 425,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/425"
+}
