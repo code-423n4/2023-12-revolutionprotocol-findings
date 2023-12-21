@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "shaka",
+  "risk": "2",
+  "title": "`NontransferableERC20Votes` does not comply with ERC-20 specification",
+  "issueId": 663,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/663"
+}
