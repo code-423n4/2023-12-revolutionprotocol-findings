@@ -225,41 +225,77 @@ https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44
 
 ##
 
-## [G-6] ``timeBuffer`` storage variables should be cached with stack variable
+## [G-6] ``_vote`` function can be optimized for better gas efficiency
+
 
 ```diff
-FILE: 2023-12-revolutionprotocol/packages/revolution/src/AuctionHouse.sol
+FILE: 2023-12-revolutionprotocol/packages/revolution/src
+/CultureIndex.sol
 
-// Extend the auction if the bid was received within `timeBuffer` of the auction end time
-+  uint256 timeBuffer_ = timeBuffer ;
--        bool extended = _auction.endTime - block.timestamp < timeBuffer;
-+        bool extended = _auction.endTime - block.timestamp < timeBuffer_;
--        if (extended) auction.endTime = _auction.endTime = block.timestamp + timeBuffer;
-+        if (extended) auction.endTime = _auction.endTime = block.timestamp + timeBuffer_ ;
+function _vote(uint256 pieceId, address voter) internal {
+        require(pieceId < _currentPieceId, "Invalid piece ID");
+        require(voter != address(0), "Invalid voter address");
+        require(!pieces[pieceId].isDropped, "Piece has already been dropped");
+        require(!(votes[pieceId][voter].voterAddress != address(0)), "Already voted");
+
+        uint256 weight = _getPastVotes(voter, pieces[pieceId].creationBlock);
+        require(weight > minVoteWeight, "Weight must be greater than minVoteWeight");
+
+        votes[pieceId][voter] = Vote(voter, weight);
++       uint256 totalVoteWeights_ = totalVoteWeights[pieceId] + weight ;
+-        totalVoteWeights[pieceId] += weight;
++        totalVoteWeights[pieceId] = totalVoteWeights_;
+
+-        uint256 totalWeight = totalVoteWeights[pieceId];
+
+        // TODO add security consideration here based on block created to prevent flash attacks on drops?
+-        maxHeap.updateValue(pieceId, totalWeight);
++        maxHeap.updateValue(pieceId, totalVoteWeights_);
+-        emit VoteCast(pieceId, voter, weight, totalWeight);
++        emit VoteCast(pieceId, voter, weight, totalVoteWeights_);
+    }
 
 ```
-https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/AuctionHouse.sol#L191-L192
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol#L316-L317
 
 ##
 
-## [G-7] ``size`` storage variable should be cached with stack variable 
+## [G-7] ``parent(current)`` function return value should be cached with stack variable instead of calling second time
 
-Caching the ``size`` storage variable on the stack can lead to gas savings, especially in a context where size is accessed multiple times within a function. Saves ``100 GAS``
+Caching the parent(current) value inside the while loop is indeed a good practice for optimizing the function. This change reduces the number of times the parent function is called, which can lead to gas savings
 
 ```diff
 FILE: 2023-12-revolutionprotocol/packages/revolution/src/MaxHeap.sol
 
- uint256 rightValue = valueMapping[heap[right]];
-+   uint256 size_ = size ;
--        if (pos >= (size / 2) && pos <= size) return;
-+        if (pos >= (size_ / 2) && pos <= size_) return;
+124: uint256 current = size;
++ uint256 parent_;
+        while (current != 0 && valueMapping[heap[current]] > valueMapping[heap[parent(current)]]) {
++           parent_ = parent(current) ;
+-            swap(current, parent(current));
++            swap(current, parent_);
+-            current = parent(current);
++            current = parent_;
+        }
 
-        if (posValue < leftValue || posValue < rightValue) {
+
+143: // Decide whether to perform upwards or downwards heapify
+        if (newValue > oldValue) {
+            // Upwards heapify
+            while (position != 0 && valueMapping[heap[position]] > valueMapping[heap[parent(position)]]) {
++      uint256 parent_ = parent(current) ;          
+-                swap(position, parent(position));
++                swap(position, parent_);
+-                position = parent(position);
++                position = parent_;
+            }
+        } else if (newValue < oldValue) maxHeapify(position); // Downwards heapify
 
 ```
-https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/MaxHeap.sol#L102
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/MaxHeap.sol#L124-L128
 
-##
+
+
+
 
 ## [G-8] Check Arguments Early
 
@@ -421,44 +457,10 @@ function setCreatorsAddress(address _creatorsAddress) external override onlyOwne
 ```
 https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/ERC20TokenEmitter.sol#L288C5-L313
 
-##
-
-## [G-11] ``parent(current)`` function return value should be cached with stack variable instead of calling second time
-
-Caching the parent(current) value inside the while loop is indeed a good practice for optimizing the function. This change reduces the number of times the parent function is called, which can lead to gas savings
-
-```diff
-FILE: 2023-12-revolutionprotocol/packages/revolution/src/MaxHeap.sol
-
-124: uint256 current = size;
-+ uint256 parent_;
-        while (current != 0 && valueMapping[heap[current]] > valueMapping[heap[parent(current)]]) {
-+           parent_ = parent(current) ;
--            swap(current, parent(current));
-+            swap(current, parent_);
--            current = parent(current);
-+            current = parent_;
-        }
-
-
-143: // Decide whether to perform upwards or downwards heapify
-        if (newValue > oldValue) {
-            // Upwards heapify
-            while (position != 0 && valueMapping[heap[position]] > valueMapping[heap[parent(position)]]) {
-+      uint256 parent_ = parent(current) ;          
--                swap(position, parent(position));
-+                swap(position, parent_);
--                position = parent(position);
-+                position = parent_;
-            }
-        } else if (newValue < oldValue) maxHeapify(position); // Downwards heapify
-
-```
-https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/MaxHeap.sol#L124-L128
 
 ##
 
-## [G-12]   newPiece.totalVotesSupply state variable value should be cached 
+## [G-11]   newPiece.totalVotesSupply state variable value should be cached 
 
 ```diff
 FILE: 2023-12-revolutionprotocol/packages/revolution/src/CultureIndex.sol
@@ -475,12 +477,12 @@ FILE: 2023-12-revolutionprotocol/packages/revolution/src/CultureIndex.sol
 -        emit PieceCreated(pieceId, msg.sender, metadata, newPiece.quorumVotes, newPiece.totalVotesSupply);
 +        emit PieceCreated(pieceId, msg.sender, metadata, newPiece.quorumVotes, totalVotesSupply_ );
 
-`
+```
 https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol#L233-L240
 
 ##
 
-## [G-13] computePurchaseRewards functions can be more gas optimized
+## [G-12] computePurchaseRewards functions can be more gas optimized
 
 
 Combine Calculations: Calculate each reward component once and use these calculations both for populating the RewardsSettings struct and for computing the total reward. This avoids duplicating the same multiplication and division operations.
@@ -489,8 +491,8 @@ Direct Total Reward Computation: Instead of calling computeTotalReward, directly
 
 #### Original Code
 
-```diff
-FILE : Breadcrumbs2023-12-revolutionprotocol/packages/protocol-rewards/src/abstract
+```solidity
+FILE : 2023-12-revolutionprotocol/packages/protocol-rewards/src/abstract
 /RewardSplits.sol
 
 function computeTotalReward(uint256 paymentAmountWei) public pure returns (uint256) {
@@ -556,6 +558,65 @@ function computePurchaseRewards(uint256 paymentAmountWei) public pure returns (R
 
 ```
 https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/protocol-rewards/src/abstract/RewardSplits.sol#L40-L64
+
+
+
+## [G-13] ``timeBuffer`` storage variables should be cached with stack variable
+
+```diff
+FILE: 2023-12-revolutionprotocol/packages/revolution/src/AuctionHouse.sol
+
+// Extend the auction if the bid was received within `timeBuffer` of the auction end time
++  uint256 timeBuffer_ = timeBuffer ;
+-        bool extended = _auction.endTime - block.timestamp < timeBuffer;
++        bool extended = _auction.endTime - block.timestamp < timeBuffer_;
+-        if (extended) auction.endTime = _auction.endTime = block.timestamp + timeBuffer;
++        if (extended) auction.endTime = _auction.endTime = block.timestamp + timeBuffer_ ;
+
+```
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/AuctionHouse.sol#L191-L192
+
+##
+
+## [G-14] ``size`` storage variable should be cached with stack variable 
+
+Caching the ``size`` storage variable on the stack can lead to gas savings, especially in a context where size is accessed multiple times within a function. Saves ``100 GAS``
+
+```diff
+FILE: 2023-12-revolutionprotocol/packages/revolution/src/MaxHeap.sol
+
+ uint256 rightValue = valueMapping[heap[right]];
++   uint256 size_ = size ;
+-        if (pos >= (size / 2) && pos <= size) return;
++        if (pos >= (size_ / 2) && pos <= size_) return;
+
+        if (posValue < leftValue || posValue < rightValue) {
+
+```
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/MaxHeap.sol#L102
+
+##
+
+## [G-15] ``msgValueRemaining - toPayTreasury`` cache the computation results with local variable instead of repeated computations
+
+```diff
+FILE: 2023-12-revolutionprotocol/packages/revolution/src
+/ERC20TokenEmitter.sol
+
+//Share of purchase amount to reserve for creators
+        //Ether directly sent to creators
++    uint256 msgValueRemainingmsgValueRemainingResult = msgValueRemaining - msgValueRemaining ;
+-        uint256 creatorDirectPayment = ((msgValueRemaining - msgValueRemaining) * entropyRateBps) / 10_000;
++        uint256 creatorDirectPayment = (msgValueRemainingmsgValueRemainingResult * entropyRateBps) / 10_000;
+        //Tokens to emit to creators
+-        int totalTokensForCreators = ((msgValueRemaining - toPayTreasury) - creatorDirectPayment) > 0
++        int totalTokensForCreators = (msgValueRemainingmsgValueRemainingResult - creatorDirectPayment) > 0
+-            ? getTokenQuoteForEther((msgValueRemaining - toPayTreasury) - creatorDirectPayment)
++            ? getTokenQuoteForEther(msgValueRemainingmsgValueRemainingResult - creatorDirectPayment)
+            : int(0);
+
+```
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/ERC20TokenEmitter.sol#L177-L181
 
 
 
