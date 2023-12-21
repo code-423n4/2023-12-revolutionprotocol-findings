@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "LilCaera",
+  "risk": "3",
+  "title": "An artPiece with a creator address set to address(0) leads to a pseudo-permanent DoS if it ends up being auctioned.",
+  "issueId": 617,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/617"
+}
