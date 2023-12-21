@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Dobry",
+  "risk": "3",
+  "title": "The `builderReferral`, `purchaseReferral` and `deployer` can never be equal to `address(0)`, which leads to the `revolutionRewardRecipient` stealing their rewards",
+  "issueId": 739,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/739"
+}
