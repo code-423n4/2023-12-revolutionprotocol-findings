@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "0xHelium",
+  "risk": "2",
+  "title": "newPiece.quorumVotes can round down to zero when creating new piece in case totalSupply is very low; effect is CultureIndex.dropTopVotedPiece can drop a piece without meeting quorum vote",
+  "issueId": 641,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/641"
+}
