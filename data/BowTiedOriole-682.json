@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "BowTiedOriole",
+  "risk": "2",
+  "title": "Votes delegated to the zero address will be stuck forever and user can no longer delegate votes",
+  "issueId": 682,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/682"
+}
