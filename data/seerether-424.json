@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "seerether",
+  "risk": "2",
+  "title": "The voteWithSig function is vulnerable to replay attacks ",
+  "issueId": 424,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/424"
+}
