@@ -112,7 +112,7 @@ https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44
 
 ### [L-04] Temporary DoS of auction if computeTotalReward() is more than 50_000 ether or less than 0.0000001 ether
 
-If entropyRateBps() is less than 10,000, erc20TokenEmitter.buyToken will be called with the remaining msg.value: { value: creatorsShare - ethPaidToCreators }. This value will be checked in `computeTotalReward()`, which is called by `_handleRewardsAndGetValueToSend`(). computeTotalReward() will check whether the msg.value is more than 50,000 ether or less than 0.0000001 ether. 
+If entropyRateBps() is less than 10,000, erc20TokenEmitter.buyToken will be called with the remaining msg.value: { value: creatorsShare - ethPaidToCreators }. This value will be checked in `computeTotalReward()`, which is called by `_handleRewardsAndGetValueToSend`(). computeTotalReward() will check whether the msg.value is more than 50,000 ether or less than 0.0000001 ether.
 
 ```
     function computeTotalReward(uint256 paymentAmountWei) public pure returns (uint256) {
@@ -155,9 +155,7 @@ In ERC20TokenEmitter.sol, there is a function called `buyToken()` where a buyer 
 >       require(msg.sender != treasury && msg.sender != creatorsAddress, "Funds recipient cannot buy tokens");
 ```
 
-
 https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/ERC20TokenEmitter.sol#L158C33-L158C33
-
 
 ### [L-06] Limit the amount of new pieces that can be created in CultureIndex to prevent high gas payments everytime a vote is casted
 
@@ -181,17 +179,19 @@ Whenever a new art piece is created in CultureIndex.sol, the piece is inserted i
 
 There are no limitations as to how many pieces can be created. This means that anyone can create a new piece just by paying some gas fees. The heap can be constantly updated with new pieces, and it is assumed that there will always be more piece than auction available.
 
-Note that the piece is inserted into the maxHeap with 0 as the default vote value. When a vote occurs, `updateValue()` is called, passing in the new weight value and checking whether the value is greater than the parent. 
+Note that the piece is inserted into the maxHeap with 0 as the default vote value. When a vote occurs, `updateValue()` is called, passing in the new weight value and checking whether the value is greater than the parent.
 
 If the position is greater than the parent, do a swap. Also note the usage of a while loop.
 
 ```
         maxHeap.updateValue(pieceId, totalWeight);
 ```
+```
+function updateValue(uint256 itemId, uint256 newValue) public onlyAdmin {
+uint256 position = positionMapping[itemId];
+uint256 oldValue = valueMapping[itemId];
 
-   function updateValue(uint256 itemId, uint256 newValue) public onlyAdmin {
-        uint256 position = positionMapping[itemId];
-        uint256 oldValue = valueMapping[itemId];
+
 
         // Update the value in the valueMapping
         valueMapping[itemId] = newValue;
@@ -199,14 +199,16 @@ If the position is greater than the parent, do a swap. Also note the usage of a 
         // Decide whether to perform upwards or downwards heapify
         if (newValue > oldValue) {
             // Upwards heapify
+
 >           while (position != 0 && valueMapping[heap[position]] > valueMapping[heap[parent(position)]]) {
 >               swap(position, parent(position));
+
                 position = parent(position);
             }
         } else if (newValue < oldValue) maxHeapify(position); // Downwards heapify
     }
-
-Since there can be many thousand pieces that can exist at the same time without making the cut to go to the auction house, a user may have to spend a large amount of tokens just to cast a vote. 
+```
+Since there can be many thousand pieces that can exist at the same time without making the cut to go to the auction house, a user may have to spend a large amount of tokens just to cast a vote.
 
 Even though using a heap uses O(1) time, there is still a gas limit. Limit the total number of art pieces that can coexist at the same time to prevent the heap from expanding too large.
 
@@ -235,6 +237,18 @@ function initialize(
 ```
 
 https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol#L109-L134
+
+
+### [L-08] MIN_TOKEN_MINT_GAS_THRESHOLD should be flexible
+
+`MIN_TOKEN_MINT_GAS_THRESHOLD`is hardcoded as 750,000. This value should be changeable by the owner, although it may incur more centralization risk. Otherwise, remove this variable altogether.
+
+```
+    // TODO investigate this - The minimum gas threshold for creating an auction (minting VerbsToken)
+    uint32 public constant MIN_TOKEN_MINT_GAS_THRESHOLD = 750_000;
+```
+
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/AuctionHouse.sol#L87-L88
 
 ### [I-01] If onboarding is slow, early users can monopolize the entire protocol
 
@@ -277,7 +291,7 @@ ERC721 votes have a voting weight as well, and the votes can be transferrable th
     }
 ```
 
-Do note the discrepency of token transfers, unsure if this is intended. 
+Do note the discrepency of token transfers, unsure if this is intended.
 
 A potential solution if this issue is unintended is to prevent ERC721 holders to transfer their ERC721 tokens or delegate their votes to another person
 
@@ -288,6 +302,3 @@ https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44
 ERC20 vote token holders can sell their vote tokens indirectly by putting their votes up for sale, much like a gauge system. Vote holders can sell voting services to clients to circumvent the "no transfer/approval" restriction.
 
 https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/NontransferableERC20Votes.sol#L94-L102
-
-
-
