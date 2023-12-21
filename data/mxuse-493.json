@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "mxuse",
+  "risk": "2",
+  "title": "enum Mediatype (AUDIO & OTHER) are not checked and therefore able to bypass metadata length check.",
+  "issueId": 493,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/493"
+}
