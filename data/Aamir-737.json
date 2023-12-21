@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Aamir",
+  "risk": "2",
+  "title": "An attacker can front run buyer's `ERC20TokenEmitter::buyToken()`  transaction which will give him less tokens than expected",
+  "issueId": 737,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/737"
+}
