@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Dobry",
+  "risk": "3",
+  "title": "The `creator` can perform a DoS attack which will make users unable to buy tokens",
+  "issueId": 726,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/726"
+}
