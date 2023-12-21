@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "alexbabits",
+  "risk": "3",
+  "title": "Auction refunds are lost if bidder address cannot send ETH and/or WETH.",
+  "issueId": 366,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/366"
+}
