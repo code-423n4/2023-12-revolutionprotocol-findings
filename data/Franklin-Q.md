@@ -12,4 +12,4 @@ https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44
 
 [L-04] `A bid placed on an Artpiece is permanent and cannot be cancelled`
 **Recommendation**
-Consider adding Functionality for bidders to cancel their bids. With the current implementation any bid placed on an art piece is permanent and cannot be cancelled 
+Consider adding Functionality for bidders to cancel their bids. With the current implementation any bid placed on an art piece is permanent and cannot be cancelled unless someone places a higher bid. 
