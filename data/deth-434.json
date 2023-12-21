@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "deth",
+  "risk": "3",
+  "title": "CultureIndex.sol#_vote() - Users can vote with a voting snapshot created at creationBlock, which can lead to more voting weight available than should exist for a piece",
+  "issueId": 434,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/434"
+}
