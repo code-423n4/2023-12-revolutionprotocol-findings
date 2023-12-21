@@ -3,7 +3,7 @@ Some functions within the protocol operate independently without invoking other 
 
 
 #Vulnerability Detail
-If a method doesn't involve any external calls, reentrancy is impossible, allowing for the omission of this modifier in such methods."
+If a method doesn't involve any external calls, reentrancy is impossible, allowing for the omission of this modifier in such methods.
 
 
 #Code Snippet
