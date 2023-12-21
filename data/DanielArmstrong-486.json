@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "DanielArmstrong",
+  "risk": "3",
+  "title": "VRGDAC.sol#yToX: Calculation contains big rounding error.",
+  "issueId": 486,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/486"
+}
