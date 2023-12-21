@@ -101,3 +101,79 @@ Manual review
 ## Recommended Mitigation Steps
 
 Set the `creatorRateBps` and `setEntropyRateBps` variables in the `initialize()` function if the protocol intends creators to benefit from token buys from the start. Alternatively, clearly document these mechanics in the project's documentation if the delay in rewarding creators is intentional.
+
+
+# Misleading Comment in MaxHeap Contract
+
+## Summary
+
+The comment above MaxHeap::insert() says "/// @dev The function will revert if the heap is full," but the heap doesn't have a max capacity.
+
+## Vulnerability Details
+
+The MaxHeap contract does not explicitly define a maximum size for the heap, nor does it enforce a maximum size through the code. In Solidity, mappings, such as the heap mapping used to represent the heap data structure, do not have a predefined size limit and can grow dynamically as long as there is enough gas to perform the operations and the Ethereum block gas limit is not exceeded.
+
+## Impact
+
+This inaccuracy can mislead and confuse reviewers of the contract.
+
+## Tools Used
+
+Manual review
+
+## Recommended Mitigation Steps
+
+Remove the comment.
+
+
+&nbsp;
+&nbsp;
+&nbsp;
+# Convert Non-State Accessing Functions to Pure to Save Gas
+
+## Summary
+
+The following functions can be restricted to pure functions: `transfer(); _transfer(); transferFrom; approve; _approve; _approve; _spendAllowance`.
+
+## Vulnerability Details
+
+Due to the non-transferable nature of the token, functions related to transfer, such as `_transfer(); transferFrom; approve; _approve; _approve; _spendAllowance`, do not read or write to the contract storage. Consequently, marking these functions as pure or view can enhance gas efficiency.
+
+## Impact
+
+Saving gas costs for users.
+
+## Tools Used
+
+Manual review
+
+## Recommended Mitigation Steps
+
+Change the following functions to pure functions: `_transfer(); transferFrom; approve; _approve; _approve; _spendAllowance`.
+
+
+ 
+&nbsp; 
+&nbsp;  
+&nbsp;  
+# Misleading Comment in MaxHeap Contract
+
+## Summary
+
+In [line 16](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/NontransferableERC20Votes.sol#L16) of `NontransferableERC20Votes`, the comment implies the token can be transferred, which is not the case for the protocol's token.
+
+## Vulnerability Details
+
+The `NontransferableERC20Votes` contract does not allow the transfer of tokens from one account to another. However, the comment describes the token as having such properties.
+
+## Impact
+
+This inaccuracy can mislead and confuse reviewers of the contract.
+
+## Tools Used
+
+Manual review
+
+## Recommended Mitigation Steps
+
+Correct the error in the comment. Clearly state that the token is non-transferable and update the comment to accurately reflect the token's capabilities.
