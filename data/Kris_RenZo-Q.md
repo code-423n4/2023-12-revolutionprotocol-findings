@@ -177,3 +177,65 @@ Manual review
 ## Recommended Mitigation Steps
 
 Correct the error in the comment. Clearly state that the token is non-transferable and update the comment to accurately reflect the token's capabilities.
+
+&nbsp;
+&nbsp;
+&nbsp;
+# Gas-Efficient `_mintTo()` Implementation
+
+## Summary
+
+The current implementation of `_mintTo()` is gas-inefficient, especially when dealing with multiple creators due to its reliance on storage variables.
+
+## Vulnerability Details
+
+Optimizing the `_mintTo()` function involves using a `memory` variable (`newPiece`) instead of a `storage` variable for improved gas efficiency ([see here](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/VerbsToken.sol#L296C20-L296C20)). By creating a memory copy of `ArtPiece`, making necessary modifications, and then assigning it to the `artPieces` mapping in storage only once, the number of storage operations (costly in terms of gas) is reduced.
+
+## Impact
+
+Saves gas cost for users.
+
+## Tools Used
+
+Manual review
+
+## Recommended Mitigation Steps
+
+Below is a more gas-efficient implementation of the `createPiece()` function:
+
+```solidity
+function _mintTo(address to) internal returns (uint256) {
+    ICultureIndex.ArtPiece memory artPiece = cultureIndex.getTopVotedPiece();
+
+    // Check-Effects-Interactions Pattern
+    // Perform all checks
+    require(
+        artPiece.creators.length <= cultureIndex.MAX_NUM_CREATORS(),
+        "Creator array must not be > MAX_NUM_CREATORS"
+    );
+
+    // Use try/catch to handle potential failure
+    try cultureIndex.dropTopVotedPiece() returns (ICultureIndex.ArtPiece memory _artPiece) {
+        artPiece = _artPiece;
+        uint256 verbId = _currentVerbId++;
+
+        // Create a memory copy of the art piece
+        ICultureIndex.ArtPiece memory newPiece = artPiece;
+
+        // Perform all necessary modifications to newPiece in memory
+        // ...
+
+        // Assign the memory art piece to the storage mapping only once
+        artPieces[verbId] = newPiece;
+
+        _mint(to, verbId);
+
+        emit VerbCreated(verbId, artPiece);
+
+        return verbId;
+    } catch {
+        // Handle failure (e.g., revert, emit an event, set a flag, etc.)
+        revert("dropTopVotedPiece failed");
+    }
+}
+```
