@@ -9,6 +9,7 @@
 | [[L-4](#low-4)] | `ERC20TokenEmitter` allow for buying token by passing deployer, builder and purchase refferal to his own address | 1 |
 | [[L-5](#low-5)] | `MaxHeap` is inheriting from `ReentrancyGuardUpgradeable`, but non reentrant check is not done anywhere in the contract | 1 |
 | [[L-6](#low-6)] | `MaxHeap::insert` does not check if the value already exists for particular id and overwrites it| 1 |
+| [[L-7](#low-7)] | `CultureIndex::createPiece()` and  creation of art piece with empty metadata| 1 |
 | [[N-0](#Noncritical-0)] | Solidity function naming convention Not followed for external functions | 1 |
 | [[N-1](#Noncritical-1)] | Solidity function naming convention Not followed for ineternal functions| 2 |
 | [[N-2](#Noncritical-2)] | Contracts that are not mean't to be upgradeable should use normal inherited contracts| 2 |
@@ -457,6 +458,36 @@ Github: [14](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc
 ```
 
 GitHub: [119-130](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/MaxHeap.sol#L119C1-L130C6)
+
+---
+
+
+### [L-7] `CultureIndex::createPiece()` and  creation of art piece with empty metadata <a id="low-7"></a>
+
+New pieces can be created without giving any info for the metadata as there is no check in the function for the same. This could lead to creation of invalid tokens. Also `validateMediaType` only check for 3 types that allows creation of other tokens without having any of the info.
+
+Here is a test that proves that:
+
+```solidity
+
+    function test_createAPieceWithoutAnymetadata() public {
+            createArtPiece(
+                "",
+                "",
+                ICultureIndex.MediaType.OTHER,
+                "",
+                "",
+                "",
+                address(0x1),
+                10000
+            );
+    }
+
+```
+
+_Recommendations:_
+Add better checks for NFT metadata.
+
 
 ---
 
