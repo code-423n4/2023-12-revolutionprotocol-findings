@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "lsaudit",
+  "risk": "2",
+  "title": "`NontransferableERC20Votes` are transferable",
+  "issueId": 355,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/355"
+}
