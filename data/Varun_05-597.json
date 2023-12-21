@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Varun_05",
+  "risk": "2",
+  "title": "Manager can by mistake set wrong entropyRateBps which can lead to calculation error thus causing _settleAuction to fail",
+  "issueId": 597,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/597"
+}
