@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "KupiaSec",
+  "risk": "3",
+  "title": "Sending less amount of Eth instead of sending full amount and remaining Eth will be locked in the contract",
+  "issueId": 457,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/457"
+}
