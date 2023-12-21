@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "BARW",
+  "risk": "2",
+  "title": "When buying tokens through ` ERC20TokenEmitter:: buyToken` to many tokens are been minted ",
+  "issueId": 405,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/405"
+}
