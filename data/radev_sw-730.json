@@ -1,8 +1,0 @@
-{
-  "contest": 311,
-  "handle": "radev_sw",
-  "risk": "2",
-  "title": "`AuctionHous.sol` - Malicious actor can win auction unfavorably to the protocol by block stuffing",
-  "issueId": 730,
-  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/730"
-}
