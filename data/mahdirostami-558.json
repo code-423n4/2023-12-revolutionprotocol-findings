@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "mahdirostami",
+  "risk": "2",
+  "title": "Potential Dos in `AuctionHouse::_settleAuction`, due to Not checking `RewardSplits::minPurchaseAmount`,`RewardSplits::maxPurchaseAmount`",
+  "issueId": 558,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/558"
+}
