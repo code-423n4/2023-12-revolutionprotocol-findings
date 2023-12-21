@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Pechenite",
+  "risk": "2",
+  "title": "If the NFT is because the auction is not met the `reservePrice` in `_settleAuction()`  function, during the auction the totalSupply of erc721VotingToken is get in the quorumVotes, leading that the piece cannot be drpped",
+  "issueId": 740,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/740"
+}
