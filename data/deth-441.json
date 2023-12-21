@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "deth",
+  "risk": "2",
+  "title": "CultureIndex.sol#createPiece() - Users can inflate the erc20VotingToken.totalSupply to inflate the quorumVotes for a piece",
+  "issueId": 441,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/441"
+}
