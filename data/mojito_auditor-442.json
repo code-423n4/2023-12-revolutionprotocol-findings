@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "mojito_auditor",
+  "risk": "2",
+  "title": "`reservePrice` check can be breached in AuctionHouse if ETH is sent along with the constructor",
+  "issueId": 442,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/442"
+}
