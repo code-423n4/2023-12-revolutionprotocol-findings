@@ -57,7 +57,7 @@
 
 - **MultiChain risks** - The contracts are to be deployed on Ethereum, Optimism and Base chains, which have slightly different opcodes. For instance, the compiler version in use, `0.8.22` is not supported on L2 chains, consequntly contract deployment on Optimism and Base will fail. In the same vein, the use of block.number to get past votes is not very reliable on L2 chains. This is better replaced with block.timestamp parameter which is more accurate. Seeing that users are allowed to vote using signatures, there's a risk of cross-chain replay attack, especially as the user signatures do not implement a chainId parameter. Consider mitigating these to reduce these risks.
 
-- **Inter contract dependencies** - The protocol consists of a number of contracts interacting with each other, hence a problem in one, could flow into the other and pose a risk to the protocol's functionality. One of these possible cases is the dependency of the AuctionHouse on the ERC20Tokenemitter. Whether the auction house is paused or not, auctions need to be settled, however, if the ERC20Tokenemitter which can also be paused, gets paused, settling auctions becomes impossible. As a consequence, new auctions can't be created and a core part of the protocol's process is stopped. The same goes for other contracts too, a simple math error (probable as castings are unsafely done) in the VRGDAC could have a ripple effect on the protocol's functionality. 
+- **Inter contract dependencies** - The protocol consists of a number of contracts interacting with each other, hence a problem in one, could flow into the other and pose a risk to the protocol's functionality. One of these possible cases is the dependency of the AuctionHouse on the ERC20Tokenemitter. Whether the auction house is paused or not, auctions need to be settled, however, if the ERC20Tokenemitter which can also be paused, gets paused, settling auctions becomes impossible. As a consequence, new auctions can't be created and a core part of the protocol's process is stopped. The same goes for other contracts too, a simple math error (probable as division before multiplication precision error can occur) in the VRGDAC could have a ripple effect on the protocol's functionality. 
 
 - **ThirdParty dependencies** - The contracts imports OZ contracts and its upgradable counterparts, (version 5.0.0 is being used) and solady's `signedWadMath` contracts. While these have been well vetted, its important to note that no contract is fully airtight. Likewise, using the latest versions of these dependencies is not really recommended as they may contain yet to be discovered vulnerabilities. Consider switching to more proven and tested albeit older versions.
 
@@ -104,5 +104,7 @@ We approached the audit in 3 general steps after which we generated our report.
   
 
 
+
+
 ### Time spent:
-048 hours
+48 hours
