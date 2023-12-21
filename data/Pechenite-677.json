@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Pechenite",
+  "risk": "2",
+  "title": "`CultureIndex.sol` - Overall Logic Flaw due to minting of `ERC20VotingTokens` and `ERC721VotingTokens` in the same block in which new `piece` is created",
+  "issueId": 677,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/677"
+}
