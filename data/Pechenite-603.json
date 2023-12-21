@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Pechenite",
+  "risk": "3",
+  "title": "`CultureIndex.sol#dropTopVotedPiece()` - Some `pieces` cannot be dropped even after reaching their `quorumVotes`",
+  "issueId": 603,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/603"
+}
