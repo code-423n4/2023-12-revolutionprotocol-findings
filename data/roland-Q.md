@@ -8,9 +8,10 @@
 | [L-04]  | Vote allocation for ERC721 minted for active auction is counted in totalVotesSupply                                                                           |
 | [L-05]  | Front-running createPiece                                                      |
 | [L-06]  | block.number accuracy in an L2 deployment                                      |
-| [N-01]  | Code comment mismatch in getVote()                                             |
-| [N-02]  | No ownership checks on metadata content                                        |
-| [N-03]  | Code and error message mismatch on AuctionHouse initialization                 |
+| [N-01]  | Unnecessary double negation in require statement                               |
+| [N-02]  | Code comment mismatch in getVote()                                             |
+| [N-03]  | No ownership checks on metadata content                                        |
+| [N-04]  | Code and error message mismatch on AuctionHouse initialization                 |
 
 ## [L-01] No option to withdraw vote
 
@@ -54,15 +55,28 @@ In [CultureIndex.sol#L228](https://github.com/code-423n4/2023-12-revolutionproto
 
 In an L2 deployment of the protocol, ```getPastVotes()``` might revert if voting on a newly created piece within the same L1 block as the art piece creation block in [CultureIndex.sol#L233](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol#L233)
 
-## [N-01] Code comment mismatch in getVote()
+## [N-01] Unnecessary double negation in require statement
+
+Double negation in [CultureIndex.sol#L457](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol#L311) makes the statement unnecessarily confusing.
+
+### **Recommended Mitigation Steps**
+
+Improve readability by removing double negation.
+
+```
+- require(!(votes[pieceId][voter].voterAddress != address(0)), "Already voted");
++ require(votes[pieceId][voter].voterAddress == address(0), "Already voted");
+```
+
+## [N-02] Code comment mismatch in getVote()
 
 While getVote() in [CultureIndex.sol#L457](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol#L457) returns a single vote struct, given a pieceId and voter address, the function comments describe the return value to be an array of Vote structs given a pieceId. Tests indicate the code to be correct and the comments to be wrong.
 
-## [N-02] No ownership checks on metadata content
+## [N-03] No ownership checks on metadata content
 
 While anyone can permissionlessly submit art piece in [CultureIndex.sol](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol), they can also submit duplicates of art already submitted or auctioned off, for the purpose of diluting or stealing votes.
 
-## [N-03] Code and error message mismatch on AuctionHouse initialization
+## [N-04] Code and error message mismatch on AuctionHouse initialization
 
 [AuctionHouse.sol#L131](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/AuctionHouse.sol#L131)
 
