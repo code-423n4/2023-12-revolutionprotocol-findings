@@ -21,13 +21,20 @@ On top of this a few areas where it's most likely the protocol could have made m
 
 ## Codebase Assessment
 
-Overall the codebase is organised very well. Each of the core contracts for the protocol are well defined and the functionality is divided well into the relevant contracts.
+Overall the codebase is organised well. Each of the core contracts for the protocol are well defined and the functionality is divided well into the relevant contracts. As well as this the contents of each function a clear and easy to follow. One thing to note is that the layout of the functions within each contract doesn't always have a clear reasoning and would be best to follow best practices from the solidity documentation (ordered in terms of visibility from external -> private. The code is relatively well commented but can be patchy in places whilst being more verbose in others.
 
-The project has a sophisticated test suite set up in foundry, and it's relatively straightforward for outsiders to patch in their own tests as they see necessary. However it would be advisable to add more extensive tests, particularly focused on potential edge cases to cover all possible bases.
+The project has a sophisticated test suite set up in foundry, and it's relatively straightforward for outsiders to patch in their own tests as they see necessary. However it would be advisable to add more exhaustive tests, particularly focused on potential edge cases to cover all possible bases.
+
+The codebase appears to have the relevant events being emitted on key functions. One thing to note is that there appears to be a mix of require statements/custom errors and reverts with error strings used across the codebase. It would be best practices where possible to stick to one style for the contracts checks to improve readability.
+
+There are also a number of smaller tweaks that would be possible to help improve the gas usage of the contracts within the project. These include but are not limited to things such as caching array lengths before looping over them, using custom errors,
 
 ## Centrality Risk
 
-The `owner` in the protocol has a lot of power over the protocol and 
+The `owner` of the contracts in the protocol has permissions related to contract upgrades, pausing/unpausing the protocol as well as setting values of various things across the projects core contracts (functions highighted in blue on the miro board).
+
+This is something to remain keenly aware of as it means there's a large degree of responsibility in the hands of the owner, whilst also being a large amount of admin to decide over if controlled by a DAO. 
+
 
 ### Time spent:
 12 hours
