@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "0xDING99YA",
+  "risk": "2",
+  "title": "Difference between emittedTokenWad and actual token supply can cause inaccurate mint amount in buyToken()",
+  "issueId": 376,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/376"
+}
