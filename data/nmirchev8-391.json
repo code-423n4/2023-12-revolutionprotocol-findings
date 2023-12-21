@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "nmirchev8",
+  "risk": "3",
+  "title": "`MaxHeap` implementation may erase valid pieces inside `changeValue` with lower than previous",
+  "issueId": 391,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/391"
+}
