@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "rouhsamad",
+  "risk": "2",
+  "title": "Invalid calculation of tokens to mint in ERC20TokenEmitter::buyToken results in wrongfully increased price",
+  "issueId": 600,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/600"
+}
