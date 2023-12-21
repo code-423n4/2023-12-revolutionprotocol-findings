@@ -314,3 +314,106 @@ If we are in this block, then the function cultureindex.droptopvotedpiece() has 
             ...
 ```
 https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/VerbsToken.sol#L300
+
+#### [G-15] Double check size of heap size
+No need check heap size in CultureIndex.topVotedPieceId(), because in thecks in MaxHeap.getMax()
+```diff
+// CultureIndex.topVotedPieceId()
+   function topVotedPieceId() public view returns (uint256) {
+-       require(maxHeap.size() > 0, "Culture index is empty");
+        //slither-disable-next-line unused-return
+        (uint256 pieceId, ) = maxHeap.getMax();
+        return pieceId;
+    }
+// MaxHeap.getMax()
+    function getMax() public view returns (uint256, uint256) {
+        require(size > 0, "Heap is empty"); // <--------------
+        return (heap[0], valueMapping[heap[0]]);
+    }
+````
+
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol#L487
+
+#### [G-16] Unused import ReentrancyGuard
+None of the functions in contract contain a nonReentrant modifier, so you do not need to import and initialize the ReentrancyGuardUpgradeable file
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/MaxHeap.sol#L5
+
+#### [G-17] unused block Else
+In the project, the value always only increases, so we don’t need a block with code that decreases the value
+```diff
+   function updateValue(uint256 itemId, uint256 newValue) public onlyAdmin {
+       ...
+        if (newValue > oldValue) {
+            // Upwards heapify
+            while (position != 0 && valueMapping[heap[position]] > valueMapping[heap[parent(position)]]) {
+                swap(position, parent(position));
+                position = parent(position);
+            }
+          
+
+          
+-       } else if (newValue < oldValue) maxHeapify(position); // Downwards heapify
++      } 
+    }
+```
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/MaxHeap.sol#L150
+
+#### [G-18] Unused return value
+The function returns values, but they are not read by the calling function
+```diff
+// CultureIndex.dropTopVotedPiece()
+   function dropTopVotedPiece() public nonReentrant returns (ArtPiece memory) {
+        require(msg.sender == dropperAdmin, "Only dropper can drop pieces");
+
+        ICultureIndex.ArtPiece memory piece = getTopVotedPiece();
+        require(totalVoteWeights[piece.pieceId] >= piece.quorumVotes, "Does not meet quorum votes to be dropped.");
+
+        //set the piece as dropped
+        pieces[piece.pieceId].isDropped = true;
+
+        //slither-disable-next-line unused-return
+        maxHeap.extractMax();  // <-----------
+
+        emit PieceDropped(piece.pieceId, msg.sender);
+
+        return pieces[piece.pieceId];
+    }
+
+// MaxHeap.extractMax()
+-  function extractMax() external onlyAdmin returns (uint256, uint256) {
++ function extractMax() external onlyAdmin  {
+        require(size > 0, "Heap is empty");
+
+        uint256 popped = heap[0];
+        heap[0] = heap[--size];
+        maxHeapify(0);
+        // @audit-issue [G] лишний ретурн - он не использутеся
+-        return (popped, valueMapping[popped]);
+    }
+```
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/MaxHeap.sol#L163
+
+#### [G-19] Unused second return value
+```diff
+// CultureIndex.topVotedPieceId()
+  function topVotedPieceId() public view returns (uint256) {
+        require(maxHeap.size() > 0, "Culture index is empty");
+        //slither-disable-next-line unused-return
+        (uint256 pieceId, ) = maxHeap.getMax(); // <--------
+        return pieceId;
+    }
+// MaxHeap.extractMax()
+-   function extractMax() external onlyAdmin returns (uint256, uint256) {
++  function extractMax() external onlyAdmin returns (uint256) {
+        require(size > 0, "Heap is empty");
+
+        uint256 popped = heap[0];
+        heap[0] = heap[--size];
+        maxHeapify(0);
+      
+-       return (popped, valueMapping[popped]);
++      return popped;
+    }
+```
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/MaxHeap.sol#L169-L172
+
