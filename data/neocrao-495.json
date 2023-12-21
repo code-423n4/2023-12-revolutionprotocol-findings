@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "neocrao",
+  "risk": "3",
+  "title": "When auction is paused, the bids are allowed and auction parameters can be changed, which can lead to bidder strategies to get affected",
+  "issueId": 495,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/495"
+}
