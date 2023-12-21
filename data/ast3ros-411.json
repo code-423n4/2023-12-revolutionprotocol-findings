@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ast3ros",
+  "risk": "2",
+  "title": "The buyToken function can be DOS",
+  "issueId": 411,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/411"
+}
