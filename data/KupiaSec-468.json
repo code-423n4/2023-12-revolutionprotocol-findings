@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "KupiaSec",
+  "risk": "2",
+  "title": "Attacker could abuse victim's vote to pass their own art piece",
+  "issueId": 468,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/468"
+}
