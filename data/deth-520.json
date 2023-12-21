@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "deth",
+  "risk": "3",
+  "title": "ERC20TokenEmitter.sol#buyToken() - User buying tokens, can steal protocol rewards, by setting protocolRewardsRecipients to his address",
+  "issueId": 520,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/520"
+}
