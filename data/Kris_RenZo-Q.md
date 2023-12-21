@@ -68,3 +68,36 @@ Manual review
 ## Recommended Mitigation Steps
 
 It is strongly recommended to emit events after every state change and to index event parameters of type address to improve transparency and off-chain tracking. Consider adding events for each of the mentioned state changes in the `AuctionHouse::initialized()` function.
+
+&nbsp;
+&nbsp;
+&nbsp;
+# Initialization Timeframe Delay Causing Creators to Miss Rewards
+
+## Summary
+
+The `ERC20TokenEmitter` contract experiences an initialization timeframe delay, resulting in a period where creators receive zero rewards for all tokens bought.
+
+&nbsp;
+
+## Vulnerability Details
+
+The variables `creatorRateBps` and `setEntropyRateBps` are not set during contract initialization, implying their values default to zero. This leads to zero tax being paid to creators (`creatorDirectPayment` and `totalTokensForCreators`) when users buy tokens. If this is intended, it should be clearly documented in the project's documentation. Otherwise, the current implementation deprives creators of their rewards.
+
+&nbsp;
+
+## Impact
+
+Creators may feel frustrated for missing out on potential rewards, particularly if the amounts are significant.
+
+&nbsp;
+
+## Tools Used
+
+Manual review
+
+&nbsp;
+
+## Recommended Mitigation Steps
+
+Set the `creatorRateBps` and `setEntropyRateBps` variables in the `initialize()` function if the protocol intends creators to benefit from token buys from the start. Alternatively, clearly document these mechanics in the project's documentation if the delay in rewarding creators is intentional.
