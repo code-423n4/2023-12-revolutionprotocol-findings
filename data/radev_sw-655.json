@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "radev_sw",
+  "risk": "2",
+  "title": "`CultureIndex.sol#_getPastVotes()` function will not work properly on Optimism due to use of `block.number`",
+  "issueId": 655,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/655"
+}
