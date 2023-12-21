@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "deth",
+  "risk": "2",
+  "title": "Using block.number as a way of tracking snapshots can lead to inconsistent behavior on Optimism and Base",
+  "issueId": 644,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/644"
+}
