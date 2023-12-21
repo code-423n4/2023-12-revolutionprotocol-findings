@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "KupiaSec",
+  "risk": "2",
+  "title": "Loss of Funds in case of creatorAddress = address(0)",
+  "issueId": 460,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/460"
+}
