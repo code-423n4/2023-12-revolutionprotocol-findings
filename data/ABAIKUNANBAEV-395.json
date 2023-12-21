@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ABAIKUNANBAEV",
+  "risk": "2",
+  "title": "maxHeap wouldn't work as expected if the pieceId has the same number of votes as the parent pieceId",
+  "issueId": 395,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/395"
+}
