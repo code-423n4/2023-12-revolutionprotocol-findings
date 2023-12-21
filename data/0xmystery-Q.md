@@ -1,3 +1,25 @@
+## Irreversible correction if `minCreatorRateBps` has been set too high
+`AuctionHouse.setMinCreatorRateBps()` require new min rate cannot be lower than previous min rate:
+
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revolution/src/AuctionHouse.sol#L237-L241
+
+```solidity
+        //ensure new min rate cannot be lower than previous min rate
+        require(
+            _minCreatorRateBps > minCreatorRateBps,
+            "Min creator rate must be greater than previous minCreatorRateBps"
+        );
+```
+If it's has been set too high, whether deliberately or accidentally, there's no way to drop the threshold. Hence, this could affect future setting of a new `_creatorRateBps`:
+
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revolution/src/AuctionHouse.sol#L218-L221
+
+```solidity
+        require(
+            _creatorRateBps >= minCreatorRateBps,
+            "Creator rate must be greater than or equal to minCreatorRateBps"
+        );
+```
 ## Comment and doc spec mismatch
 On https://www.desmos.com/calculator/im67z1tate, the integral of price is supposed to be `p(x) = p0 * (1 - k)^(t - x/r)`. However, the exponent varies on the formula adopted by the protocol:
 
