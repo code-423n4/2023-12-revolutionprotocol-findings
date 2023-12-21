@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "McToady",
+  "risk": "2",
+  "title": "AuctionHouse::settleAuction can lead to a creator receiving less than reservePrice for their piece if reservePrice` is raised during an auction",
+  "issueId": 548,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/548"
+}
