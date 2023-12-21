@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "0xDING99YA",
+  "risk": "2",
+  "title": "An art piece with _auction.amount less than reservePrice can still be settled and owner/creators can suffer a loss",
+  "issueId": 389,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/389"
+}
