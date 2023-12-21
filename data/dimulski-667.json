@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "dimulski",
+  "risk": "2",
+  "title": "A malicious creator can manipulate QuorumVotes in createPiece",
+  "issueId": 667,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/667"
+}
