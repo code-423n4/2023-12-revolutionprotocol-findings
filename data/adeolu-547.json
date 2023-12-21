@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "adeolu",
+  "risk": "2",
+  "title": "no sllipage control when user is buying token via buyToken() in ERC20TokenEmitter.sol",
+  "issueId": 547,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/547"
+}
