@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "hals",
+  "risk": "2",
+  "title": "`ERC20TokenEmitter` contract: governance token price will be increased with each upgrade",
+  "issueId": 510,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/510"
+}
