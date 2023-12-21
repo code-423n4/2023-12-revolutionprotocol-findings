@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "mojito_auditor",
+  "risk": "2",
+  "title": " Invalid check in `getArtPieceById()` allows non-existent `verbId`",
+  "issueId": 446,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/446"
+}
