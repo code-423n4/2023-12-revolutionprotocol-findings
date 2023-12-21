@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "MrPotatoMagic",
+  "risk": "3",
+  "title": "positionMapping for last element in heap is not updated when extracting max element",
+  "issueId": 363,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/363"
+}
