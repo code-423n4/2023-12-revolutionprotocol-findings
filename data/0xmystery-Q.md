@@ -1,3 +1,11 @@
+## Comment and doc spec mismatch
+On https://www.desmos.com/calculator/im67z1tate, the integral of price is supposed to be `p(x) = p0 * (1 - k)^(t - x/r)`. However, the exponent varies on the formula adopted by the protocol:
+
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/main/packages/revolution/src/libs/VRGDAC.sol#L85
+
+```solidity
+    // given # of tokens sold, returns integral of price p(x) = p0 * (1 - k)^(x/r) 
+```
 ## Addressing Zero-Value Bids in Auction Contracts
 The auction contract, as currently designed, presents a a low to medium severity issue due to its allowance for bids of 0 ETH under specific conditions. When the `_createAuction()` function initializes an auction, it sets `auction.amount` to 0 ETH. Combined with a `reserve price` also set at 0 ETH, this configuration allows the first bid to be 0 ETH, which satisfies the contract's require statements for both the reserve price and the minimum bid increment. 
 
