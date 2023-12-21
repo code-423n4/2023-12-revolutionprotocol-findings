@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "0x11singh99",
+  "risk": "3",
+  "title": "User can pass his own addresses in `protocolRewardsRecipients` of `buyToken()` of `ERC20TokenEmitter.sol` and transfer rewards to them. No checks to verify addresses.",
+  "issueId": 628,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/628"
+}
