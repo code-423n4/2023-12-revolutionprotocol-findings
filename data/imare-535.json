@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "imare",
+  "risk": "2",
+  "title": "VerbsToken token are still accessible after burning them",
+  "issueId": 535,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/535"
+}
