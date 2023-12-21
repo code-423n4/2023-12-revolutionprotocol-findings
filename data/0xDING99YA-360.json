@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "0xDING99YA",
+  "risk": "3",
+  "title": "buyToken() calculates the tokens for a buyer incorrectly and the buyer will always receive more token than they should",
+  "issueId": 360,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/360"
+}
