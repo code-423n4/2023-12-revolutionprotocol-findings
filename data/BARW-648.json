@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "BARW",
+  "risk": "3",
+  "title": "If the `creator` variable is not set in `ERC20TokenEmitter`, when calling `buyToken`, the `emittedTokenWad` will be increased even though no tokens will be minted",
+  "issueId": 648,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/648"
+}
