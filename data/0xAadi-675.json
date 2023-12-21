@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "0xAadi",
+  "risk": "2",
+  "title": "`ERC20TokenEmitter.buyToken()` will revert if the purchase amount equals `minPurchaseAmount` or `maxPurchaseAmount` due to the flawed validation.",
+  "issueId": 675,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/675"
+}
