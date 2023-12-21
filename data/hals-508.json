@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "hals",
+  "risk": "2",
+  "title": " `AuctionHouse` contract: rewarded ERC20 governance tokens can be lost when settling an auction",
+  "issueId": 508,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/508"
+}
