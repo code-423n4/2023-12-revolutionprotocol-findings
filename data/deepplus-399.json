@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "deepplus",
+  "risk": "2",
+  "title": "In `Erc20TokenEmitter`, treasury and creators can bypass the preventing them from buying tokens by including themselves in addresses param.",
+  "issueId": 399,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/399"
+}
