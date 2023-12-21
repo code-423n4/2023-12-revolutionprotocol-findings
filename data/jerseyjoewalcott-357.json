@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "jerseyjoewalcott",
+  "risk": "3",
+  "title": "buyToken Function will break after a certain period of time",
+  "issueId": 357,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/357"
+}
