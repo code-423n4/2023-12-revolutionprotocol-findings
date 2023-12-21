@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "mrudenko",
+  "risk": "3",
+  "title": "Block Stuffing Attacks in `AuctionHouse.sol` Due to Lack of Minimum `timeBuffer` Check",
+  "issueId": 632,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/632"
+}
