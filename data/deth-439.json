@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "deth",
+  "risk": "2",
+  "title": "AucitonHouse.sol#_settleAuction() - Auction that should have been refunded, can be passed and the verb token transferred to the bidder, by forcefully sending ETH to AuctionHouse, through a selfdestruct",
+  "issueId": 439,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/439"
+}
