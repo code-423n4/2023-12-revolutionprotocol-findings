@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "cheatc0d3",
+  "risk": "3",
+  "title": "No access control on critical functions",
+  "issueId": 708,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/708"
+}
