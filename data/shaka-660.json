@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "shaka",
+  "risk": "2",
+  "title": "`VerbsToken.tokenURI` does not comply with ERC-721 specification",
+  "issueId": 660,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/660"
+}
