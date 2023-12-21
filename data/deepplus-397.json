@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "deepplus",
+  "risk": "2",
+  "title": "Since `buyToken` function has no slippage checking, users can get less tokens than expected when they buy tokens directly",
+  "issueId": 397,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/397"
+}
