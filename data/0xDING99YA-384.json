@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "0xDING99YA",
+  "risk": "3",
+  "title": "CultureIndex.sol allows art piece with pieceId = 0, which can break the MaxHeap implementation",
+  "issueId": 384,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/384"
+}
