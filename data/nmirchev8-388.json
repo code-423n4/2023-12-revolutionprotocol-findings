@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "nmirchev8",
+  "risk": "2",
+  "title": "Changing \"Minter\" of \"VerbsToken\" can result in locked NFT inside \"AuctionHouse\"",
+  "issueId": 388,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/388"
+}
