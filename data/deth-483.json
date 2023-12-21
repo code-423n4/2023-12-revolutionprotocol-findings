@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "deth",
+  "risk": "2",
+  "title": "AuctionHouse.sol#createBid - An auction can be extend indefinitely, because of the time buffer",
+  "issueId": 483,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/483"
+}
