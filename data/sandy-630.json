@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "sandy",
+  "risk": "2",
+  "title": "``creatorRateBps`` and ``entropyRateBps`` values are not validated properly.",
+  "issueId": 630,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/630"
+}
