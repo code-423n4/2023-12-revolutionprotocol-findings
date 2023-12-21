@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "lsaudit",
+  "risk": "2",
+  "title": "Vote signatures can be re-used on different blockchains",
+  "issueId": 354,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/354"
+}
