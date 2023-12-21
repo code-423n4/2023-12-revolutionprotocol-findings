@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "MrPotatoMagic",
+  "risk": "2",
+  "title": "Last bidder is not allowed to withdraw his bid to place a higher bid if reservePrice is updated towards end of auction",
+  "issueId": 440,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/440"
+}
