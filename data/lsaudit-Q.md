@@ -87,7 +87,7 @@ The same issue occurs in `setCultureIndex()`, `setDescriptor()`, `setMinter()` f
 The same issue occurs in `setCreatorRateBps()`, `setMinCreatorRateBps()`, `setEntropyRateBps()`, `setTimeBuffer()` from `AuctionHouse.sol`
 
 
-# [R-03] Functions which updates the value do not verify if the value was really changed
+# [R-03] Functions which update the value do not verify if the value was really changed
 
 Whenever we update/set a new value of some state variable, it's a good practice to make sure that, that value is being indeed updated.
 In the current implementation of `setCreatorRateBps()` in `AuctionHouse.sol`, even when the `_creatorRateBps` won't be changed, function will still emit an `CreatorRateBpsUpdated()` event - which might be misleading to the end-user.
@@ -107,7 +107,7 @@ The same issue occurs in `setCultureIndex()`, `setDescriptor()`, `setMinter()` f
 # [R-04] Use modifier in `MaxHeap.sol` instead of repeating the same code
 
 In `MaxHeap.sol`, both `extractMax()` and `getMax()` implements below check: `require(size > 0, "Heap is empty");`.
-Instead of repeating the same code twice, we can implement this check in a modifier (e.g. heapNotEmpty) and use that modifier on `getMax()` and `extractMax()`.
+Instead of repeating the same code twice, we can implement this check in a modifier (e.g. `heapNotEmpty`) and use that modifier on `getMax()` and `extractMax()`.
 
 
 # [R-05] `MAX_QUORUM_VOTES_BPS` is constant and cannot be updated
@@ -123,7 +123,7 @@ The maximum settable quorum votes basis points is set to a constant value. There
 
 [File: CultureIndex.sol](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol#L75)
 ```
- uint256 public constant MAX_QUORUM_VOTES_BPS = 6_000; // 6,000 basis points or 60%
+ uint256 public constant MAX_NUM_CREATORS = 100;
 ```
 
 The maximum number of creators is set to a constant value. There's no function which allows `onlyOwner` to update this value. Our suggestion is to change this value from constant to non-constant and implement additional function which will allow `onlyOwner` to update `MAX_NUM_CREATORS`.
@@ -181,3 +181,14 @@ Using double negation makes the code more complex and wastes gas. Above line is 
 ```
 require(votes[pieceId][voter].voterAddress == address(0), "Already voted");
 ```
+# [N-05] Standardize how comments are used.
+There are multiple of styles related to comments across the whole code-base. E.g. in `CultureIndex.sol`, some constants variables are commented in the same line, while others are commented above variable's declaration:
+
+[File: CultureIndex.sol](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol#L48)
+```
+48:     uint256 public constant MAX_QUORUM_VOTES_BPS = 6_000; // 6,000 basis points or 60%
+[...]
+74:     // Constant for max number of creators
+75:     uint256 public constant MAX_NUM_CREATORS = 100;
+```
+Choosing one commenting-style increases the code readability.
