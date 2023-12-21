@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "mxuse",
+  "risk": "3",
+  "title": "Minbidincrementpercentage is missing a 0 check which can lead to an unending auction",
+  "issueId": 502,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/502"
+}
