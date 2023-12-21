@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "slvDev",
+  "risk": "2",
+  "title": "Protocol targeting to deploy on `Base` and `Optimism` L2s but  does not include `chainID` to `domainSeparator`",
+  "issueId": 656,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/656"
+}
