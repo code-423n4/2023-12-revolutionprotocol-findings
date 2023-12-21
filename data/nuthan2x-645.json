@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "nuthan2x",
+  "risk": "2",
+  "title": "Some buyers wont get expected tokens minted due to precision loss",
+  "issueId": 645,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/645"
+}
