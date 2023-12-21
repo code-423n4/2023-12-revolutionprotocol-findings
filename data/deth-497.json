@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "deth",
+  "risk": "2",
+  "title": "AuctionHouse.sol#createBid() - Users can continue bidding even if the contract is paused",
+  "issueId": 497,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/497"
+}
