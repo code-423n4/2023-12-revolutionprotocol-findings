@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ro1sharkm",
+  "risk": "2",
+  "title": "Timing Inconsistencies due to block.number Usage in Optimism",
+  "issueId": 622,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/622"
+}
