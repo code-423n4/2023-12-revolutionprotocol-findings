@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Pechenite",
+  "risk": "3",
+  "title": "`CultureIndex.sol#_vote()` - Creators of certain `piece` can vote for their `piece`",
+  "issueId": 640,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/640"
+}
