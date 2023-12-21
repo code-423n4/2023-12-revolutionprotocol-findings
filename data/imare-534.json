@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "imare",
+  "risk": "2",
+  "title": "VerbsToken#tokenURI breaks eip-721 standard",
+  "issueId": 534,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/534"
+}
