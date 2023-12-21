@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Pechenite",
+  "risk": "2",
+  "title": "`AuctionHouse.sol` - auction parameters are not individually cached for each auction",
+  "issueId": 623,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/623"
+}
