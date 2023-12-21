@@ -191,4 +191,29 @@ This also applies to the [`_entropyRateBps`](https://github.com/code-423n4/2023-
 Recommend considering if this is desired property or capping to `< 100%` instead, that way the relevant parties can still get paid.
 
 ***
+2. ### Consider introducing a zero value check when setting the `_minBidIncrementPercentage`. 
+
+The `_minBidIncrementPercentage` is the minimum amount more than current highest bid that a new bidder must make before his bid his accepted.
+
+```
+    function setMinBidIncrementPercentage(uint8 _minBidIncrementPercentage) external override onlyOwner {
+        minBidIncrementPercentage = _minBidIncrementPercentage;
+
+        emit AuctionMinBidIncrementPercentageUpdated(_minBidIncrementPercentage);
+    }
+```
+
+When a user creates a new bid, the amount he sends is compared against the sum of the previous highest bid and the percentage increase in bids and is required to be greater than or equal to this sum.
+```
+    function createBid(uint256 verbId, address bidder) external payable override nonReentrant {
+       ...
+        require(
+            msg.value >= _auction.amount + ((_auction.amount * minBidIncrementPercentage) / 100), //@note
+            "Must send more than last bid by minBidIncrementPercentage amount" 
+      ...
+        );
+``` 
+Due to the above check, setting minbidpercentage to 0 introduces a sort of crace conditions in which the auction is not granted to the highest bidder but the last bidder with the same amount.
+For instance, if the initial bid is 10 Eth, and the  `minBidIncrementPercentage` is 0, this causes that the required msg.value to be sent in is >= 10 Eth. This introduces a sort of race condition in which users do everything they can to be the last bidder.
+***
 ***
