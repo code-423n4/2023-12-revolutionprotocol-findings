@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "MrPotatoMagic",
+  "risk": "3",
+  "title": "_safeTransferETHWithFallback() function can DOS and brick auction",
+  "issueId": 544,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/544"
+}
