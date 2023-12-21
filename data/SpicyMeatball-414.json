@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "SpicyMeatball",
+  "risk": "2",
+  "title": "Auction settlement may not work if entropyRateBps = 10_000 (100%)",
+  "issueId": 414,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/414"
+}
