@@ -1,9 +1,9 @@
-My Auditing approach:
+My Revolution Protocol Auditing approach:
 I looked for all of the hypothetical attack scenarios and ways the contracts could be exploited. 
 
-The buyToken function in the ERC20TokenEmitter is ultra important and there are multiple ways of writing it, depending on the security strategies.  
+My biggest take away: The buyToken function in the ERC20TokenEmitter is ultra important and there are multiple ways of writing it, depending on the security strategies.  I 
 
-All of the security checks I submitted should ensure the flow for the CultureIndex → VerbsToken → AuctionHouse contracts. Considering the unique challenges presented by the auction of community-voted art and direct payments to creators. This setup, compared to a more straightforward system like Nouns DAO, introduces additional layers of complexity that could be exploited or disrupted. Below are potential attack scenarios and corresponding security measures:
+With all of the security checks I submitted should ensure the flow for the CultureIndex → VerbsToken → AuctionHouse contracts. Considering the unique challenges presented by the auction of community-voted art and direct payments to creators. This setup, compared to a more straightforward system like Nouns DAO, introduces additional layers of complexity that could be exploited or disrupted. Below are potential attack scenarios and corresponding security measures:
 
 Attack on Voting System in CultureIndex
 Attack Scenarios:
@@ -64,8 +64,8 @@ Defense Mechanisms:
 1. Multi-Sig Wallets for Admin Keys: Use multi-signature wallets for administrative control.
 1. Timelocks and Upgrade Controls: Implement timelocks and stringent checks for smart contract upgrades.
 
-Implementation 
-The security checks can be implemented within the submissions for each of the contracts through modifiers, require statements, event emissions for tracking activities, secure mathematical operations, and strict access control mechanisms.
+Implementations: 
+How to implement the security checks can be found within the submissions for each of the contracts through modifiers, require statements, event emissions for tracking activities, secure mathematical operations, and strict access control mechanisms.
 
 These security measures aim to safeguard against potential disruptions and ensure that the decentralized art auction process aligns with community intent. Regular audits and monitoring are also recommended to promptly identify and address new vulnerabilities.
 
