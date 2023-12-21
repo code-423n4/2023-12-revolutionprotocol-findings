@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "0xhacksmithh",
+  "risk": "2",
+  "title": "voteForManyWithSig txs are open to replay attacks",
+  "issueId": 525,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/525"
+}
