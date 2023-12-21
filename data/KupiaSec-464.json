@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "KupiaSec",
+  "risk": "2",
+  "title": "Users can get more tokens than expected in buyToken()",
+  "issueId": 464,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/464"
+}
