@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "0x11singh99",
+  "risk": "2",
+  "title": "`insert()` function of `MaxHeap.sol` can insert multiple elements with same `itemId` and increase the `size` of heap, lead to unintended behaviour.",
+  "issueId": 577,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/577"
+}
