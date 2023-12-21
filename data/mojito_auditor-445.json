@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "mojito_auditor",
+  "risk": "2",
+  "title": "Voting power should be calculated at `creationBlock - 1` instead of `creationBlock`",
+  "issueId": 445,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/445"
+}
