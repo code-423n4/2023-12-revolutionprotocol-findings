@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "MrPotatoMagic",
+  "risk": "2",
+  "title": "Signature replay attacks across chains are possible due to missing chainId parameter",
+  "issueId": 423,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/423"
+}
