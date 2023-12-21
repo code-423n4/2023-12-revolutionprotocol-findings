@@ -460,3 +460,12 @@ Above code can be simplified to:
 ```
 require(votes[pieceId][voter].voterAddress == address(0), "Already voted");
 ```
+
+# [G-20] Redundant `address(0)` check in `VerbsToken.sol`
+
+[File: VerbToken.sol](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/VerbsToken.sol#L140)
+```
+require(_initialOwner != address(0), "Initial owner cannot be zero address");
+```
+
+Above check is redundant and can be removed. `_initialOwner` is being passed to Open Zeppelin's ` __Ownable_init()`. This function calls `__Ownable_init_unchained()` which already performs `address(0)` check and reverts with `OwnableInvalidOwner()` when `_initialOwner == address(0)`.
