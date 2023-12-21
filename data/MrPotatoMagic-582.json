@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "MrPotatoMagic",
+  "risk": "3",
+  "title": "Two items having same number of votes above the quorum can lead to invariant violation and unfairness towards either of the item",
+  "issueId": 582,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/582"
+}
