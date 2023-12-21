@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Varun_05",
+  "risk": "2",
+  "title": "Manager can by mistake set wrong _auctionParams.creatorRateBps which can lead to calculation error",
+  "issueId": 583,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/583"
+}
