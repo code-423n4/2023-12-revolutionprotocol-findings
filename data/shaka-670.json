@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "shaka",
+  "risk": "2",
+  "title": "PUSH0 opcode not supported in all networks",
+  "issueId": 670,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/670"
+}
