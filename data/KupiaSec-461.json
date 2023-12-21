@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "KupiaSec",
+  "risk": "2",
+  "title": "Users will get less tokens while minting due to the rounding.",
+  "issueId": 461,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/461"
+}
