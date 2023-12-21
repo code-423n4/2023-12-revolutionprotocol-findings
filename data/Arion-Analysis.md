@@ -51,6 +51,8 @@ The same applies to other parameters such as **minBidIncrementPercentage** and *
 
 2- Since the protocol is similar to the Nouns project, the Revolution protocol shouldn't depend too much on the security process of the Nouns project. Every difference in one line of code may open the door to a new attack vector.
 
+3- Currently the project only have readme docs that describe the project , in the future the project must have a professional docs. 
+
 
 ## Time Spent: 
 ~ 17 hours 
@@ -58,5 +60,7 @@ The same applies to other parameters such as **minBidIncrementPercentage** and *
 
 
 
+
+
 ### Time spent:
-40 hours
+17 hours
