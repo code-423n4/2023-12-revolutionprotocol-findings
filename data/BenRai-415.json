@@ -1,8 +1,0 @@
-{
-  "contest": 311,
-  "handle": "BenRai",
-  "risk": "2",
-  "title": "The minter of `VerbsToken` should not be able to burn any verbToken ",
-  "issueId": 415,
-  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/415"
-}
