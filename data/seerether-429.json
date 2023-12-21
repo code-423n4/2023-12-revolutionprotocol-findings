@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "seerether",
+  "risk": "3",
+  "title": "Vulnerability stems from initializing votes to 0 rather than the current power distribution",
+  "issueId": 429,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/429"
+}
