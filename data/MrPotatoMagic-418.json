@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "MrPotatoMagic",
+  "risk": "3",
+  "title": "ETH used to calculate ERC20 tokens for creatorsAddress is permanently locked in ERC20TokenEmitter.sol",
+  "issueId": 418,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/418"
+}
