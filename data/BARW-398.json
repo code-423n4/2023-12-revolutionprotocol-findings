@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "BARW",
+  "risk": "3",
+  "title": "In `ERC20TokenEmitter:: buyToken` part of the received ETH is not send to the treasury and will be stuck in the contract for ever",
+  "issueId": 398,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/398"
+}
