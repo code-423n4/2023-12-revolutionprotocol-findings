@@ -7,6 +7,8 @@
 The Revolution Protocol is a blockchain-based platform that integrates community-driven art curation with an auction system. The protocol allows users to upload art pieces to the CultureIndex contract, where community members vote on their favorites. The top-voted art piece is auctioned daily as an ERC721 VerbsToken via the AuctionHouse. The auction proceeds are split between the art piece's creator(s) and the auction contract owner. The creator(s) receive ERC20 governance tokens and a share of the winning bid, while the auction owner receives the remaining ETH. The highest bidder wins the ERC721 art piece. The ERC20 tokens granted to the creator are calculated by the ERC20TokenEmitter. Both the ERC721 and ERC20 governance tokens have voting power in the CultureIndex.
 
 
+
+
 ## Scope of Analysis
 - MaxHeap.sol
 - CultureIndex.sol
@@ -20,6 +22,10 @@ The Revolution Protocol is a blockchain-based platform that integrates community
 
 
 ## Mechanism Review 
+
+
+
+The Revolution  protocol's mechanism is built around a decentralized auction house that allows users to bid on Verbs using ETH. The CultureIndex contract manages the curation and voting of art pieces, while the MaxHeap contract likely assists in organizing data efficiently. The NontransferableERC20Votes contract provides a voting mechanism without the transferability of tokens, enhancing governance stability. The ERC20TokenEmitter contract handles the emission of governance tokens, and the TokenEmitterRewards along with RewardSplits contracts manage the distribution of rewards. The VRGDAC contract is assumed to be the governance contract for the DAO, and the VerbsToken contract represents the ERC721 tokens being auctioned.
 
 **1 . MaxHeap.sol**
  
@@ -215,6 +221,10 @@ I've acquired several insights and reinforced critical learnings that are essent
 
 **Controlled Upgrade Process:** Ensure that the upgrade process for upgradeable contracts is tightly controlled, transparent, and involves community input.
 
+
+## Conclusion
+
+Revolution Protocol is an ambitious project with a complex ecosystem of contracts. While the design is innovative, it is essential to address the identified risks and recommendations to ensure the protocol's security, decentralization, and economic viability. Multiple rounds of audits, economic analysis, and community feedback will be crucial in refining and securing the protocol before a mainnet launch.
 
 
 
