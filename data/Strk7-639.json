@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Strk7",
+  "risk": "2",
+  "title": "Calling MaxHeap.insert on the same itemId will overwrite the previous value",
+  "issueId": 639,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/639"
+}
