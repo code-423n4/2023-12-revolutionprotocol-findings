@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "00xSEV",
+  "risk": "2",
+  "title": "Contracts are completely non-functional on Optimism and Base due to incompatible Solidity version.  `evm_version` is not set, so defaults to Shanghai",
+  "issueId": 378,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/378"
+}
