@@ -108,3 +108,15 @@ The WETH contract always returns TRUE at the end of the transfer() function. If 
     }
 ```
 https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/AuctionHouse.sol#L435-L438
+
+#### [Q-12] User can not cancel his vote
+The user cannot cancel his vote; usually this function is available until a quorum is reached in other projects.
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/CultureIndex.sol#L332-L334
+
+#### [Q-13] Owner could not change admin address in MaxHeap contract
+The admin address is set only in the initialization function. There is not function for change it.
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/MaxHeap.sol#L58
+
+#### [Q-14] Unused import ReentrancyGuard
+None of the functions in this file contain a nonReentrant modifier, so you do not need to import and initialize the ReentrancyGuardUpgradeable file
+https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/MaxHeap.sol#L5
