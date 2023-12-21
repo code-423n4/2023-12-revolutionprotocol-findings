@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "Strk7",
+  "risk": "2",
+  "title": "Potential Bidding Manipulation in `AuctionHouse.sol` Due to Zero Minimum Bid Increment",
+  "issueId": 633,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/633"
+}
