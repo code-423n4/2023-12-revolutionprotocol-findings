@@ -115,7 +115,7 @@ Above `require` can be moved on top, above `__Pausable_init();`. If condition wo
 
 # [G-05] Function `createBid()` in `AuctionHouse.sol` can be optimized
 
-We can merge to `if` condition into one. That way we can achieve two optimizations:
+We can merge two `if` condition into one. That way we can achieve two optimizations:
 
 * Getting rid of `extended` variable declaration
 * Removing one `if` condition
@@ -192,7 +192,7 @@ This proves, that `uint256 creatorsShare = _auction.amount - auctioneerPayment;`
 The bot-race result reported that `addresses.length` should not be used inside loop and it should be cached in the local variable before line 209.
 However `addresses.length` should be cached earlier. ``addresses.length`` is being used in line 162, which means that it should be cached before that line. That way, we won't be calculating the length of `addresses` two times:
 
-[File: ](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/ERC20TokenEmitter.sol#L162-L209)
+[File: ERC20TokenEmitter.sol](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/ERC20TokenEmitter.sol#L162-L209)
 ```
 162:    require(addresses.length == basisPointSplits.length, "Parallel arrays required");
 
@@ -322,7 +322,7 @@ for (uint256 i; i < len; i++) {
  for (uint256 i; i < len; i++) {
 ```
 
-Above loop can be rewritten to `do-while` loop. Especially, that it implements just a simple iteration, which can easily be re-implemented to a do-while loop.
+Above loops can be rewritten to `do-while` loops. Especially, that they implement just a simple iterations, which can easily be re-implemented to a do-while loops.
 
 
 # [G-13] If statements should be performed before `require` in `CultureIndex.sol`
@@ -469,3 +469,19 @@ require(_initialOwner != address(0), "Initial owner cannot be zero address");
 ```
 
 Above check is redundant and can be removed. `_initialOwner` is being passed to Open Zeppelin's ` __Ownable_init()`. This function calls `__Ownable_init_unchained()` which already performs `address(0)` check and reverts with `OwnableInvalidOwner()` when `_initialOwner == address(0)`.
+
+# [G-21] Redundant state variable reading in `MaxHeap.sol`
+
+[File: MaxHeap.sol](https://github.com/code-423n4/2023-12-revolutionprotocol/blob/d42cc62b873a1b2b44f57310f9d4bbfdd875e8d6/packages/revolution/src/MaxHeap.sol#L156-L164)
+```
+function extractMax() external onlyAdmin returns (uint256, uint256) {
+        require(size > 0, "Heap is empty");
+
+        uint256 popped = heap[0];
+        heap[0] = heap[--size];
+        maxHeapify(0);
+
+        return (popped, valueMapping[popped]);
+    }
+```
+There is no need to waste gas on reading `size` variable in line: ` require(size > 0, "Heap is empty");`. If `size == 0`, function will  revert in line `heap[0] = heap[--size];`, because of the underflow. Please notice, that implementing this recommendation will save gas (there will be no need to read `size` variable) - but - in case of revert, we won't get the `"Heap is empty"` revert message.
