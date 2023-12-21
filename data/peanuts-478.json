@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "peanuts",
+  "risk": "2",
+  "title": "ERC721 Votes are not counted when calculating the price of the ERC20 Votes using VRGDA",
+  "issueId": 478,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/478"
+}
