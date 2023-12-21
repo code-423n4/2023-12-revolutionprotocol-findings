@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "bareli",
+  "risk": "2",
+  "title": "auction.endTime can be increase using timeBuffer.",
+  "issueId": 728,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/728"
+}
