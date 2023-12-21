@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "mahdirostami",
+  "risk": "3",
+  "title": "Potential Exploitable Behavior in AuctionHouse::_settleAuction",
+  "issueId": 546,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/546"
+}
