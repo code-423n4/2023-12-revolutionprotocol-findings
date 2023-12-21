@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "ast3ros",
+  "risk": "2",
+  "title": "The auction will be DoS if a voter gains majority of voting power",
+  "issueId": 410,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/410"
+}
