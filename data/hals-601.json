@@ -1,0 +1,8 @@
+{
+  "contest": 311,
+  "handle": "hals",
+  "risk": "2",
+  "title": "`ERC20TokenEmitter` contract: the price of governance token can reach zero after some point of time without purchasing",
+  "issueId": 601,
+  "issueUrl": "https://github.com/code-423n4/2023-12-revolutionprotocol-findings/issues/601"
+}
